@@ -22,18 +22,27 @@
 */
 // 다음은 O(n) 알고리즘의 예시 코드이다. 0부터 n-1까지의 숫자를 출력하는 경우이다.
 function exampleLinear(n) {
-    for (var i = 0; i < n; i++) {
-        console.log(i);
-    }
+  for (var i = 0; i < n; i++) {
+    console.log(i)
+  }
 }
 // O(n²)은 2차 시간이고, O(n³)는 3차 시간이다. 2차시간과 3차시간 복잡도의 예는 다음과 같다.
 function exampleQuadratic(n) {
-    for (var i = 0; i < n; i++) {
-        console.log(i);
-        for (var j = i; j < n; j++) {
-            console.log(j);
-        }
+  for (var i = 0; i < n; i++) {
+    console.log(i)
+    for (var j = i; j < n; j++) {
+      console.log(j)
     }
+  }
 }
+
+console.log("선형알고리즘시작")
+exampleLinear(10)
+console.log("선형알고리즘끝")
+
+console.log("쿼드라틱 알고리즘 시작")
+exampleQuadratic(10)
+console.log("쿼드라틱 알고리즘 끝")
+
 // 1. 출력의 형태를 보자 : 0:0123 1:123 2:23 3:3  (n = 4 일때)  연산횟수 5,4,3,2  합 : 14회
 // 2.
