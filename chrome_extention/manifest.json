@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
  
-  "name": "FrequencyOf",
-  "description": "My lovely words",
+  "name": "Here My TED Script",
+  "description": "Easy to show TED script",
   "version": "1.0",
  
   "browser_action": {
