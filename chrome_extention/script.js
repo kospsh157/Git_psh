@@ -1,11 +1,15 @@
 var xhr = new XMLHttpRequest()
-console.log(xhr)
+
 
 xhr.onload = function() {
   if (xhr.status == 200) {
     alert(xhr.responseText)
   }
 }
+
+var url = window.location.href;
+console.log(url);
+
 
 xhr.open(
   "GET",
@@ -14,4 +18,8 @@ xhr.open(
 )
 xhr.send()
 
-//https://www.ted.com/talks/발표자_비디오제목/transcript?language=ko   이런식 왜 저장안되는지?
+//https://www.ted.com/talks/발표자_비디오제목/transcript?language=ko 
+
+
+
+
