@@ -14,4 +14,4 @@ xhr.open(
 )
 xhr.send()
 
-//https://www.ted.com/talks/발표자_비디오제목/transcript?language=ko   이런식
+//https://www.ted.com/talks/발표자_비디오제목/transcript?language=ko   이런식 왜 저장안되는지?
