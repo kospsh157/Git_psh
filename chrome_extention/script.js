@@ -13,3 +13,5 @@ xhr.open(
   true
 )
 xhr.send()
+
+//https://www.ted.com/talks/발표자_비디오제목/transcript?language=ko   이런식
