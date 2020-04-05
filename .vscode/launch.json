@@ -5,12 +5,72 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "CodeLens (Launch) - if_5",
+      "request": "launch",
+      "mainClass": "if_5",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - if_4",
+      "request": "launch",
+      "mainClass": "if_4",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - multipleDeepening",
+      "request": "launch",
+      "mainClass": "multipleDeepening",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Remainder",
+      "request": "launch",
+      "mainClass": "Remainder",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - FiveCalc",
+      "request": "launch",
+      "mainClass": "FiveCalc",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Divine",
+      "request": "launch",
+      "mainClass": "Divine",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "Main",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "algo.BecJoon.Basic.Main",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "program": "${workspaceFolder}/javaScript_Structures_Algorithms/BIG_O_concept.ts",
-      "outFiles": ["${workspaceFolder}/javaScript_Structures_Algorithms/*.js"]
+      "outFiles": [
+        "${workspaceFolder}/javaScript_Structures_Algorithms/*.js"
+      ]
     }
   ]
 }
