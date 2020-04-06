@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - for_2",
+      "request": "launch",
+      "mainClass": "for_2",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - for_1",
+      "request": "launch",
+      "mainClass": "for_1",
+      "projectName": "Git_psh_5f4b0d78"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - if_5",
       "request": "launch",
       "mainClass": "if_5",

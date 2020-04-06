@@ -23,5 +23,27 @@ public class if_5 {
         int outputMin = totalMin % 60;
 
         System.out.println(outputHour + " " + outputMin);
+
+        // 시간와 분단위로 다르게 나눠서 생각하는 방법
+        // 시간과 분 값을 입력받는 것 까진 같다
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        // 45 분 보다 적으면 시간도 -1 해줘야한다.
+        if (b < 45) {
+            // 시간이 00시이면 -1 할 때 -1이 아니라 23시가 되어야한다.
+            // 시간이 00시가 아니라면, 그냥 -1 하면된다.
+            if (a == 0) {
+                a = 23;
+            } else {
+                a -= 1;
+            }
+            // 그리고 나서 현재 분과 45사이의 얼마나 차이값이 있는지 알고 그 만큼 분을 빼줘야한다.
+            int sub = 45 - b;
+            int realMin = 60 - sub;
+            System.out.println(a + " " + realMin);
+        } else {
+            // 현재 분이 45가 넘는 다면 시간은 그대로 출력 분은 그냥 45를 빼서 출력하면된다.
+            System.out.printf(a + " %d", b - 45);
+        }
     }
 }
