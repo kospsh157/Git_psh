@@ -5,6 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "노드 실행",
+      "program": "${file}",
+      "cwd": "${workspaceRoot}"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "프로세스에 연결"
+    },
+    {
       "type": "java",
       "name": "CodeLens (Launch) - for_2",
       "request": "launch",
@@ -73,18 +85,6 @@
       "request": "launch",
       "mainClass": "algo.BecJoon.Basic.Main",
       "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}/javaScript_Structures_Algorithms/BIG_O_concept.ts",
-      "outFiles": [
-        "${workspaceFolder}/javaScript_Structures_Algorithms/*.js"
-      ]
     }
   ]
 }
