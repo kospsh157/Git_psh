@@ -53,8 +53,38 @@ let basket = {
   _name: "ball",
   _mates: ["rebound", "shoot", "pass"],
   matesCount() {
-    console.log(this) // basket 객체를 가리킴
+    console.log(this) // basket 객체를 가리킴  ==> 가장 가까운 자신을 포함하고 있는 객체를 가리킴 (함수나 변수는 안됨 객체임 객체!)
     this._mates.forEach((f) => console.log(this._name + " is " + f))
   },
 }
 basket.matesCount()
+
+
+
+
+
+
+//기존 es5 이하에서는 함수가 실행되는 context를 명확히 하기 위해 (this 같은 놈들) 함수 실행시 bind 명령을 이용한다.
+//특히 콜백을 다를 때 특히 많이 사용한다.
+
+var callbackFunc = function(val){
+  console.log("DO something");
+}.bind(this)
+
+
+//es6 에서는 화살표를 사용하면 자동으로 바인딩된다 
+var callbackFunc2 = (val) =>{
+  console.log("DO something2")
+}
+
+
+// 또한 파라미터값에 기본값을 입력할 수 있다.
+var helloworldd = (name = "default") => {
+  console.log("Hello, " + name);
+}
+helloworldd("newName") // Hello, newName
+helloworldd(); // Hello, default
+
+
+
+
