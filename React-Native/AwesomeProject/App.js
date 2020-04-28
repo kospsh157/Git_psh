@@ -17,6 +17,7 @@ export default class extends React.Component {
       data: {
         main: { temp },
         weather,
+        name,
       },
     } = await axios.get(
       `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
@@ -26,6 +27,7 @@ export default class extends React.Component {
       isLoading: false,
       condition: weather[0].main,
       temp,
+      name,
     })
   }
 
@@ -41,15 +43,15 @@ export default class extends React.Component {
     }
   }
   componentDidMount() {
-    // 컴포넌트의 DOM이 마운트되고 나서 실행되는 함수  //외부 라이브러리 호출이나, 아작스 요청 같은 것들
+    // 컴포넌트의 DOM이 마운트되고 나서 실행되는 함수  //외부 라이브러리 호출이나, 아작스 요청 같은 것들 //내가 만든 함수 호출
     this.getLocation()
   }
   render() {
-    const { isLoading, temp, condition } = this.state
+    const { isLoading, temp, condition, name } = this.state
     return isLoading ? (
       <Loading />
     ) : (
-      <Weather temp={Math.round(temp)} condition={condition} />
+      <Weather temp={Math.round(temp)} condition={condition} name={name} />
     )
   }
 }
