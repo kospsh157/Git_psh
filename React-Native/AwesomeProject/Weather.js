@@ -72,7 +72,11 @@ const weatherOptions = {
     subtitle: "Waht a u doing? It's sunny day huh",
   },
 }
-export default function Weather({ temp, condition, name }) {
+
+export default function Weather({ reload, temp, condition, name }) {
+  buttonClickListener = () => {
+    alert("Clicked On Button !!!")
+  }
   return (
     <LinearGradient
       colors={weatherOptions[condition].gradient}
@@ -101,6 +105,8 @@ export default function Weather({ temp, condition, name }) {
         color="white"
         style={styles.reloadIcon}
       ></MaterialCommunityIcons>
+
+      <Button onPress={() => buttonClickListener} title="RELOAD"></Button>
     </LinearGradient>
   )
 }
