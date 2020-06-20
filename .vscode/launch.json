@@ -4,6 +4,7 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+
     {
       "type": "node",
       "request": "launch",
@@ -17,74 +18,17 @@
       "name": "프로세스에 연결"
     },
     {
-      "type": "java",
-      "name": "CodeLens (Launch) - for_2",
+      "type": "go",
       "request": "launch",
-      "mainClass": "for_2",
-      "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - for_1",
-      "request": "launch",
-      "mainClass": "for_1",
-      "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - if_5",
-      "request": "launch",
-      "mainClass": "if_5",
-      "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - if_4",
-      "request": "launch",
-      "mainClass": "if_4",
-      "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - multipleDeepening",
-      "request": "launch",
-      "mainClass": "multipleDeepening",
-      "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - Remainder",
-      "request": "launch",
-      "mainClass": "Remainder",
-      "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - FiveCalc",
-      "request": "launch",
-      "mainClass": "FiveCalc",
-      "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - Divine",
-      "request": "launch",
-      "mainClass": "Divine",
-      "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - Main",
-      "request": "launch",
-      "mainClass": "Main",
-      "projectName": "Git_psh_5f4b0d78"
-    },
-    {
-      "type": "java",
-      "name": "CodeLens (Launch) - Main",
-      "request": "launch",
-      "mainClass": "algo.BecJoon.Basic.Main",
-      "projectName": "Git_psh_5f4b0d78"
+      "name":"Launch go",
+      "program": "${file}",
+      "cwd": "${workspaceRoot}"
     }
+   
   ]
 }
+
+
+
+
+
