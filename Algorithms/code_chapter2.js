@@ -151,7 +151,7 @@ function movingAverage2(arr, m){
     for(let i=m-1; i<N; i++){
         partialSum += arr[i]
         ret.push(partialSum/m)
-        partialSum -= arr[i-m+1]
+        partialSum -= arr[i-m+1]   
     }
     return ret
 }
@@ -168,14 +168,73 @@ function movingAverage2(arr, m){
 
 
 
-// < 이동 평균 구하기, 이진 탐색, 집합 덮개 알고리즘 > 
+// < 이동 평균 구하기, 이진 탐색, 집합 덮개 알고리즘, 소인수 분해 과정 알고리즘 > 
+// 이동평균구하기 (원본 배열데이터, M)이 입력값
+function movingAvg_myself(arr, m){
+    let sum = 0;
+    let mAvg = []
+    for(let i=0; i<m-1; i++){
+        sum += arr[i]
+    }
+    for(let i=m-1; i<arr.length; i++){
+        sum += arr[i]
+        mAvg.push(sum / m)
+        sum -= arr[i-m+1]   // 현재 index는 m번째 원소이다. 현재 원소에서 몇 번을 가야 첫번째 원소가 나올까
+                            // m-1번을 앞으로 가야 첫번째 원소가 나온다.  >>> 현재 인덱스에서 (m-1)번을 빼주면 첫번째 인덱스가 나온다.
+                            // i-(m-1) = i-m+1 이 첫번째원소가 된다. 그리고 이게 0번 인덱스인다.
+    }
+    return mAvg
+}
+// 이진 탐색
+// 나중에 
 
 
 
+// 집합 덮개 알고리즘 
+// 
 
 
 
 // < p111 삽입정렬, 선택정렬 알고리즘 > 
+// 삽입정렬  시간 복잡도 : N^2
+// 삽입정렬의 최상의 시간 복잡도는 N이며 최악이 N^2이다. 전체 시간복잡도 역시  N^2이다.
+// 선택정렬의 시간복잡도도 N^2이기 때문에 주어진 배열이 임의의 순열일때, 일반적으로 삽입정렬이 선택정렬보다 빠르다. 
+// 삽입 정렬은 흔히 사용하는 N^2 정렬중 가장 빠른 알고리즘이다.
+let insertionSort = function(array) {
+    var i = 1, j, temp;
+    for (i; i < array.length; i++) {
+      temp = array[i]; // 새로운 숫자를 선택함
+      for (j = i - 1; j >= 0 && temp < array[j]; j--) { // 선택한 숫자를 이미 정렬된 숫자들과 비교하며 넣을 위치를 찾는 과정, 선택한 숫자가 정렬된 숫자보다 작으면
+        array[j + 1] = array[j]; // 한 칸씩 뒤로 밀어낸다
+      }
+      array[j + 1] = temp; // 마지막 빈 칸에 선택한 숫자를 넣어준다.
+    }
+    return array; 
+};
+
+let insertionSort_myself = function(arr){
+    let j = 0;
+    let temp = 0;
+    for(let i=1; i<arr.length; i++){
+        temp = arr[i]
+        for(j=i-1; j>=0; j--){  
+            if(temp >= arr[j]){
+                break;    // 왼쪽은 항상 정렬되어있으므로, 왼쪽에서 가장 오른쪽 수와 현재 선택된 수와 비교해서 선택된수가 더 크면 선택할 수가
+                          // 왼쪽 원소들보다 항상 크므로 제자리에 있어도 된다. 
+            }
+            else if(temp < arr[j]){
+                arr[j+1] = arr[j]  // 한 칸 뒤로 자리를 미룬다. 그리고 다시 반복문을 돌려서 그 앞에것도 temp보다 작으면 다시 계속 한 칸씩 뒤로 보낸다.
+            }                      // 그러다가 조건에 안맞게되고, 그럼 빈공간을 남겨두고 바로 2번재 포문을 탈출하고 
+        }
+        arr[j+1] = temp              // for문을 돌때 -1씩 차감되므로, 다시 +1를 해줘야 빈공간의 인덱스로 간다.
+    }                                
+    return arr
+}
+ let arr = [1,2,4,3]  
+ console.log(insertionSort_myself(arr))
+
+// 선택정렬 알고리즘
+
 
 
 
@@ -185,7 +244,9 @@ function movingAverage2(arr, m){
 // 최악의 시간복잡도와 평균시간복잡도는 알고리즘에따라 다르게 나올수도있다.
 // 시간복잡도는 빅오표기법으로 나타내며 이는 수행시간을 간단히 나타낼뿐이다. 실제 수행시간은 다르다.
 
+// 알고리즘 마다 최악의수행시간 복잡도와 평균수행시간 복잡도는 다르다. 그리고 어떤 알고리즘의 빅오 표기법은 수행시간을 간단히 나타내는 표기법일뿐이다.
+// 빅오표기법은 단순히 어떤 알고리즘의 가장 깊은 반복문의 f(x) 를 알아보는 것이다. 
 
 
 
- 
+
