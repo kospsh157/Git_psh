@@ -55,13 +55,17 @@ if(toPick === 0){
 }
 // 고를 수 있는 가장 작은 번호를 계산한다.
 let smallest = picked.length ? 0 : picked.pop() + 1
+// 여기서 picked 배열에 아무것도 없다면 그냥 아직 하나도 안뽑았다는 뜻이니깐 
+// 0을 넣으면 되고,
+// 뭐라도 있다면 최소 한 번 이상 뽑았다는 소리니깐 picked 의 마지막원소 + 1 부터 뽑으면 되니깐 
+// picked 의 마지막원소 보다 하나 많은것 부터 시작한다.
 
 // 이 단계에서 원소 하나를 고른다.
-for(let next = smallest; next < n ; next++){
-    picked.push(next)
-    recursivePick(n, picked, toPick-1)
-    picked.pop();
-}
+    for(let next = smallest; next < n ; next++){
+        picked.push(next)   // 선택된 인덱스에 해당하는 원소를 picked에 넣는다.
+        recursivePick(n, picked, toPick-1) // 다시 재귀호출한다.
+        picked.pop(); // 재귀호출을하고 
+    }
 }
 
 let picked = []
@@ -71,6 +75,16 @@ recursivePick(5,picked, 1)
 
 // n개의 원소 중에서 m개의 원소를 골라내는 함수(중복 없이)
 // const arr = Array.from({length: 5}, () => 0);
+
+/*
+    1. n까지의 숫자중에서 m개를 뽑는 모든 경우의수 찾기
+    2. 예를 들면 n = 8 일때 [1,2,3,4,5,6,7,8] 에서 m개를 뽑는 경우의 수 찾기 
+    3. 재귀함수로.
+    4. 여기서 뽑은 숫자는 중복되면 안되므로, 따로 선택된 수 Picked 배열에 넣는다.
+    5. 그리고 세번째 파라미터로 앞으로 몇개를 더 뽑아야 할 지 알려준다.
+    한번씩 싸이클을 돌때마다 -1씩 차감된다.
+*/
+
 let recursivePick_myself = function(n, Picked, toPick){
     // 골라야한 원본 배열 생성
     //let arr = Array.from({length:n}, ()=>0)
@@ -82,7 +96,7 @@ let recursivePick_myself = function(n, Picked, toPick){
 
     for(let i =0; i<n; toPick){
         let temp = arr[i]
-        if(Picked.indexOf(temp)){
+        if(Picked.indexOf(temp)){ // 여기서 picked 배열이 비었다면 >
             
         }
         Picked.push(arr[i])
@@ -90,4 +104,64 @@ let recursivePick_myself = function(n, Picked, toPick){
     }
 }
 
+// 재귀호출 
+/*
+    1. 기저사례 확인 : m번 선택했으면 종료
+    2. 반복되어야할 것 : n까지의 배열에서 인덱스 순서대로 하나씩 
+    3. 
+*/
 
+// p149 미친 존나 짜증나는 조합 알고리즘 (c++이므로 그냥 코드만 이해할것)
+void printPicked(vector<int>& picked) { 
+    for (auto& v : picked) cout << v << ' '; cout << '\n'; 
+} 
+// n: 전체 원소의 수 
+// picked: 지금까지 고른 원소들의 번호(인덱스) 
+// toPick: 더 고를 원소의 수 
+// 일 때, 앞으로 toPick개의 원소를 고르는 모든 방법을 출력 
+void pick(int n, vector<int> &picked, int toPick) { 
+    // base case: 더 고를 원소가 없을 때 고른 원소들을 출력 
+    if (toPick == 0) { printPicked(picked); return; } 
+    //고를 수 있는 가장 작은 번호 계산 i
+    nt smallest = picked.empty() ? 0 : picked.back() + 1; 
+    //이 단계에서 원소 하나를 고름 
+    for (int next = smallest; next < n; ++next) { 
+        picked.push_back(next); 
+        pick(n, picked, toPick - 1); // 여기서 재귀호출하니깐 toPick이 0이 될때까지 계속 돌다가 출력한다.
+        picked.pop_back(); // 여기서 하나를 빼는 이유는 포문이 결론적으로 한번더 돌게 되어서 의도치않게 picked에 다음원소가 추가된다.
+        //      
+    } 
+}
+
+
+// p 152
+// n 칸 정사각형이 주어지고, 어떤 임의 좌표칸하나가 주어질 때, 그리고 임의 글자가 주어질 때, 해당 좌표에서 시작하는 
+// 단어가 주어진 정사각형에 있는지 완전 탐색해서 찾는 문제
+
+// 이 코드에서 볼 것은 일단 주변 좌표를 찾기 위해서 상대 좌표를 x 축 y축 나눠서 배열화 시켰다는 것
+// 이걸로 포문을 돌려서 한칸씩이동하
+
+
+
+let recursivePick_myself2 = function(n, arr, m){
+    // n : N까지 원소 
+    // 굳이 새로운 배열을 생성할 필요가 없는 이유가 n 이 주어지는 순간 배열 필요없이 원소들이 1부터 n까지임을 알 수 있기때문이다.
+    // 기저 사례
+    // 문제점 : 중복 선택이됨.
+    if(m === 0){
+        console.log(arr)  // m번을 뽑았으면 arr을 반환
+        return
+    }
+    let smallest = arr.length===0? 0:arr.length+1
+    
+    for(let i=smallest; i<n; i++){
+        // i부터 시작해서 선택하고 arr에 넣는다.
+        arr.push(i)
+        // 그리고 다시 재귀호출해서 부른다.
+        recursivePick_myself2(n, arr, m-1)
+        arr.pop();
+    }
+}
+
+let arr = []
+recursivePick_myself2(5,arr, 4)
