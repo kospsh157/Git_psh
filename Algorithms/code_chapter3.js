@@ -119,19 +119,7 @@ void printPicked(vector<int>& picked) {
 // picked: 지금까지 고른 원소들의 번호(인덱스) 
 // toPick: 더 고를 원소의 수 
 // 일 때, 앞으로 toPick개의 원소를 고르는 모든 방법을 출력 
-void pick(int n, vector<int> &picked, int toPick) { 
-    // base case: 더 고를 원소가 없을 때 고른 원소들을 출력 
-    if (toPick == 0) { printPicked(picked); return; } 
-    //고를 수 있는 가장 작은 번호 계산 i
-    nt smallest = picked.empty() ? 0 : picked.back() + 1; 
-    //이 단계에서 원소 하나를 고름 
-    for (int next = smallest; next < n; ++next) { 
-        picked.push_back(next); 
-        pick(n, picked, toPick - 1); // 여기서 재귀호출하니깐 toPick이 0이 될때까지 계속 돌다가 출력한다.
-        picked.pop_back(); // 여기서 하나를 빼는 이유는 포문이 결론적으로 한번더 돌게 되어서 의도치않게 picked에 다음원소가 추가된다.
-        //      
-    } 
-}
+
 
 
 // p 152
@@ -152,7 +140,7 @@ let recursivePick_myself2 = function(n, arr, m){
         console.log(arr)  // m번을 뽑았으면 arr을 반환
         return
     }
-    let smallest = arr.length===0? 0:arr.length+1
+    let smallest = arr.length === 0? 0 : arr[arr.length-1] + 1
     
     for(let i=smallest; i<n; i++){
         // i부터 시작해서 선택하고 arr에 넣는다.
@@ -164,4 +152,27 @@ let recursivePick_myself2 = function(n, arr, m){
 }
 
 let arr = []
-recursivePick_myself2(5,arr, 4)
+recursivePick_myself2(5,arr, 2)
+
+
+
+// for문에 재귀호출이 있다면 어떻게 돌아가나 보자
+let recursiveInFor = function(arr, i){
+    if(i>=arr.length){                         // 기저사례가 가장 먼저 코드에 나와야한다.
+        return console.log("전체 함수 끝")
+    }
+    // 배열과 인덱스가 주어지면 해당 배열의 인덱스 원소를 출력하는 함수
+    console.log(arr[i])
+    for(let j = 0; j<2; j++){
+        console.log(`for문 ${j}번 시작`)   // 재귀 호출 전에 for문 안에 코드들은 n=0 을 벗어나지 못한다.  
+        recursiveInFor(arr, i+1)          // 다만 재귀호출을 만나기 직전까지의 모든 코드는 계속 반복 실행된다.
+        console.log(`for문 ${j}번 끝`)     // 재귀호출 다음 코드는 재귀호출이 한번끝나고나서야 불려지고 for문 종료
+    }
+                                            //  재귀호출시 i++ 로 하면 무한호출이 된다. i가 늘어나지 않기 때문이다. 
+                                            // ++i 로 하면된다.
+}
+
+let arr = [1,2,3]
+recursiveInFor(arr, 0)
+
+

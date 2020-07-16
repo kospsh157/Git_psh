@@ -70,11 +70,13 @@ rl.on('line', (input)=>{
 // toFixed(n) : 소수점 n+1자리에서 반올림해서 n자리까지만 절사한다. 주의할 점은 문자열로 반환되므로, 다시 숫자로 바꿔줘야한다.
 
 rl.on('line', (input)=>{
-	let float = Number(input)
+	let float = Number(input)  
 	let fixFloat = float.toFixed(3)
 
 	fixFloat.pop()
 	console.log(fixFloat)
 	rl.close()
 })
+
+
 
