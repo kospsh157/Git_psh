@@ -3,16 +3,112 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>시맨틱 구조</title>
+    <title>코로나 대시보드</title>
+
+    <style>
+    html, body{
+        margin:0;
+        height:100%;
+        overflow:hidden;
+    }
+    header, section, footer{
+        text-align: center;
+        
+    }
+    ul{
+        text-align:left;
+        list-style:none;
+        font-size: 15px;
+        margin-top:100px;
+        padding:10px;
+        margin-left: 15px;
+    }
+    header{
+        width:90%;
+        float: right;
+        font-size: 30px;
+        border-bottom: 1px solid #ddd;
+        line-height: 55px;
+        height : 10%;
+        padding:0;
+        top:0;
+    }
+    aside{
+        position:fixed;
+        top:0;
+        margin-top: 5px;
+        left:0;
+        bottom:0;
+        padding:0;
+        width:10%;
+        height:100%;
+        background-color: #fff;
+        border-right:1px solid #ddd; 
+        cursor:default;
+
+    }
+
+    section{
+        border-bottom : 1px solid #ddd;
+        height : 80%;
+        line-height: 300px;
+        width: 90%;
+        float:right;
+    }
+    footer {
+        width:90%;
+        float:right;
+        border-bottom : 1px solid #ddd;           
+        height : 10%;
+        line-height : 55px;
+    }
+    .api1,.api2,.api3{
+        float:left;
+        width:31%;
+        margin: 0;
+        padding:10px;
+    }
+    .topSection{
+        /* display: inline; */
+    }
+    .bottomSection{
+        clear: left;
+        
+    }
+    
+    </style>
+    
 </head>
 <body>
-    <header> 머리말 </header>
-    <nav>메뉴바</nav>
+    <header> 코로나 대시보드 </header>
+    <aside> 
+        <ul>
+            <li style="margin-bottom:20px;">코로나 국내 현황</li>
+            <li style="margin-bottom:20px;">코로나 세계 현황</li>
+            <li style="margin-bottom:20px;">코로나 도/시별 현황</li>
+            <li style="margin-bottom:20px;">코로나 확진자 지도</li>
+        </ul>
+    </aside>
     <section>
-    본문 제목 및 내용
-        <article> 콘텐츠 </article>
+        <div class="topSection">
+            <div class="api1">
+                첫번째 api1
+            </div>
+                
+            <div class="api2">
+                두번째 api2
+            </div>
+
+            <div class="api3">
+                세번째 api3
+            </div>
+        </div>
+
+        <div class="bottomSection">
+            섹션하단
+        </div>
+
     </section>
-<aside> 사이드바 </aside>
-<footer> 꼬리말 </footer>
+    <footer> copyright 박성호 for Code Interview</footer>
 </body>
 </html>

@@ -32,6 +32,17 @@ app.get('/', function(req, res) { // '/' 위치에 'get'요청을 받는 경우,
             console.log("다음줄 body 출력")
             console.log(body)
             // body를 받아서 그래프를 그려야하는데 
+            /*
+            차트1
+            사망수(DEATH_CNT), 치료중수(CARE_CNT) 가로 막대그래프
+            확진자수(DECIDE_CNT), 격리해제수(CLEAR_CNT) 가로 막대그래프
+            기준일 (STATE_DT)
+
+            차트2
+            누적검사수 ACC_EXAM_CNT 가로막대 그래프
+            확진자수 	DECIDE_CNT  가로막대 그래프
+            기준일 (STATE_DT)
+            */
             fs.readFile('indexView.html', function(error, data){
                 if(error){
                     console.log('에러발생')
@@ -42,16 +53,26 @@ app.get('/', function(req, res) { // '/' 위치에 'get'요청을 받는 경우,
                 }
                
             })
-            
         }
         
         //console.log('Status', response.statusCode);
         //console.log('Headers', JSON.stringify(response.headers));
         //console.log('Reponse received', body);
 
-
-
     });
+    // 차트 3 
+    /*
+        세계 코로나현황 차트
+    */
+    
+
+
+
+    // 차트 4
+    /*
+        국내 확진사 증가추새
+
+    */
 
 
 
@@ -64,8 +85,7 @@ app.listen(port, function(){ // port변수를 이용하여 3000번 포트에 nod
   console.log('server on! http://localhost:'+port); //서버가 실행되면 콘솔창에 표시될 메세지입니다.
 });
 
-// api 요청 함수1
-/* NodeJs 샘플 코드 */
+
 
 
 
