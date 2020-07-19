@@ -3,7 +3,6 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    
     <title>코로나 대시보드</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
@@ -16,7 +15,6 @@
     }
     header, section, footer{
         text-align: center;
-        
     }
     ul{
         text-align:left;
@@ -48,9 +46,7 @@
         background-color: #fff;
         border-right:1px solid #ddd; 
         cursor:default;
-
     }
-
     section{
         border-bottom : 1px solid #ddd;
         height : 80%;
@@ -87,10 +83,10 @@
     <header> 코로나 대시보드 </header>
     <aside> 
         <ul>
-            <li style="margin-bottom:20px;">코로나 국내 현황</li>
-            <li style="margin-bottom:20px;">코로나 세계 현황</li>
-            <li style="margin-bottom:20px;">코로나 도/시별 현황</li>
-            <li style="margin-bottom:20px;">코로나 확진자 지도</li>
+            <li style="margin-bottom:20px;"><a href=#> 코로나 국내 현황 </a></li>
+            <li style="margin-bottom:20px;"><a href=#> 국내 성별 현황 </a></li>
+            <li style="margin-bottom:20px;"><a href=#> 세계 사망자 현황</a></li>
+            <li style="margin-bottom:20px;"><a href=#> 국내 도시별 증가현황 </a></li>
         </ul>
     </aside>
     <section>
@@ -152,7 +148,7 @@
         // 날짜 포맷
         let year = tempDate.slice(0,4) + '년 '
         let month = tempDate.slice(4,6) + '월 '
-        let day = tempDate.slice(7,9) + '일'
+        let day = tempDate.slice(6,8) + '일'
         let date = year + month + day
         
        
@@ -363,9 +359,7 @@
         let jasonData4Text = jasonData4[0].textContent
         // string to json
         let string2Jason4 = JSON.parse(jasonData4Text)
-        // json 데이타 확인
-        console.log(string2Jason4)
-
+       
         // 데이터 가공
         /*
             gubun : 지역 

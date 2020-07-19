@@ -13,13 +13,14 @@ app.engine('html', require('ejs').renderFile);
 
 
 // 1. 국내 코로나감염자 통계 요청값 변수 정리
+
 var urlKorea = 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson';
 var queryParamsKorea = '?' + encodeURIComponent('serviceKey') + '=3UW45wSqvQDEsJKi7cJHGS1WoHXYU%2FmmiSeT4B64RH30S9HS7hwUjAMpcsSCfcoSzliLCixNHC5Ji4zitO2yAg%3D%3D'; /* Service Key*/
 //queryParams += '&' + encodeURIComponent('ServiceKey') + '=' + encodeURIComponent('-'); /* */
 queryParamsKorea += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /* */
 queryParamsKorea += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /* */
 queryParamsKorea += '&' + encodeURIComponent('startCreateDt') + '=' + encodeURIComponent('20200205'); /* */
-queryParamsKorea += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent('20200705'); /* */
+queryParamsKorea += '&' + encodeURIComponent('endCreateDt') + '=' + encodeURIComponent('20200719'); /* */
 
 
 // 2. 국내 코로나 연령별/성별 통계 요청값 변수 정리
