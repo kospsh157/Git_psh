@@ -1,0 +1,15 @@
+<!-- 먼저 사용하는 툴에서 모든 문자열을 utf-8 형식으로 저장 및 설정한다. -->
+
+<!-- jsp 파일 한글 처리  -->
+<%@ page contentType = "text/html;charset=utf-8" %>
+
+<!-- 자바 서블릿 한글 처리 -->
+request.setCharacterEncoding("utf-8");
+
+
+
+
+
+
+
+

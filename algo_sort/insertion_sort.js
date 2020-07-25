@@ -19,7 +19,7 @@ let insertionSort = function(arr, size) {
 
 
 
-// 삽입정렬 
+// 삽입정렬    // 이건 왜 안되는가? 
 let insertion_sort = function(arr){
     let n = arr.length
     for(let i=1; i < n; i++){
@@ -39,8 +39,8 @@ let insertion_sort = function(arr){
 
 
 let arr = [10,9,8,7,6,5,5,10,3,4,2,1]
-//console.log(insertion_sort(arr))
-console.log(insertionSort(arr, arr.length));
+console.log(insertion_sort(arr))
+//console.log(insertionSort(arr, arr.length));
 
 
 

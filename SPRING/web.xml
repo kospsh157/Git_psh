@@ -34,3 +34,9 @@
     jsp 파일에서 쓴 한글을 여기서 적용되지 않는다. 
     jsp 에서 한글을 쓰려면 페이지 최상단에 언어셋 설정을 해줘야 한다. 
  -->
+
+
+
+<!-- jsp 파일 한글 처리  -->
+<%@ page contentType = "text/html;charset=utf-8" %>
+
