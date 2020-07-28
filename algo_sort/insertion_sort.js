@@ -38,6 +38,7 @@ let insertion_sort = function(arr){
 
 
 
+
 let arr = [10,9,8,7,6,5,5,10,3,4,2,1]
 console.log(insertion_sort(arr))
 //console.log(insertionSort(arr, arr.length));
