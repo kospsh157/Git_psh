@@ -7,6 +7,18 @@ import { RenderAfterNavermapsLoaded, NaverMap, Marker  } from 'react-naver-maps'
  
   function NaverMapAPI() {
     const navermaps = window.naver.maps;
+    let markerList = [];
+
+    // 정보창 리스트
+    let infoWindowList = [];
+
+    // 마커의 핸들러 인덱스
+    let handerIndex = 0;
+
+    // 마커 생성 함수
+     // API 응답값을 이용하여 해당 지점 정보창 만들기
+  
+
     return (
       <NaverMap
       
@@ -17,6 +29,8 @@ import { RenderAfterNavermapsLoaded, NaverMap, Marker  } from 'react-naver-maps'
         }}
         defaultCenter={{ lat: 37.554722, lng: 126.970833 }} // 지도 초기 위치
         defaultZoom={10} // 지도 초기 확대
+        onClick={() => {alert('여기는 N서울타워입니다.');}}  
+     
       >
          
         <Marker
