@@ -135,6 +135,7 @@ function fn_excel()
 										</div>
 									</div>
 									
+									<!-- 여기서 부터 데이타 테이블 본체  -->
 									<div class="row">
 										<div class="col-sm-12">
 											<table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info">
@@ -197,9 +198,11 @@ function fn_excel()
 													<ui:pagination paginationInfo = "${paginationInfo}" type="image" jsFunction="fn_listPaging"/>
 											</ul> --%>
 											
-										   </div>
-									 </div>
-									 
+										</div>
+									</div>
+									 <!--여기까지 태이블 본체   -->
+
+									 <!-- 페이징 버튼 -->
 									 <div class="row">
 										 
 										 <div class="col-sm-4">
@@ -215,6 +218,9 @@ function fn_excel()
 											 </div>
 										 </div>
 									 </div>
+
+
+									 
 									 
 								</div>
 							  </div>
