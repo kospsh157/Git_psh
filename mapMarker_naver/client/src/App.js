@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import { RenderAfterNavermapsLoaded, NaverMap, Marker  } from 'react-naver-maps';
+import {naver} from './maps'
 
 
 // 네이버 지도에서 좌표
