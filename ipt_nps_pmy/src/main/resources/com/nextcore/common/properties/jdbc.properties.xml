@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+
+    <comment>JDBC Properties</comment>
+
+    <!-- MySQL Config -->
+    <entry key="db.driverClassName">com.mysql.jdbc.Driver</entry>
+<!--     <entry key="db.username">oamlgu</entry> -->
+<!--     <entry key="db.password">#@dltnstls00</entry> -->
+<!--     <entry key="db.url">jdbc:mysql://121.165.242.78:23306/IPTNMS?useUnicode=yes&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;autoReconnectForPools=true</entry> -->
+	<!-- <entry key="db.username">root</entry>
+    <entry key="db.password">#@dltnstls00</entry>
+    <entry key="db.url">jdbc:mysql://121.165.242.171:23306/iptnms?useUnicode=yes&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;autoReconnectForPools=true</entry> -->
+    
+    
+   <!--   <entry key="db.username">ipxnms</entry>
+    <entry key="db.password">$kim99bsd00</entry>
+    <entry key="db.url">jdbc:mysql://121.165.242.171:3311/ncnms_kt_thaiiptv</entry> -->
+   
+    
+    <entry key="db.username">ipxnms</entry> 
+     <entry key="db.password">$kim99bsd00</entry> 
+     <entry key="db.url">jdbc:mysql://192.168.10.206:3306/ipxnms_tkt?useUnicode=yes&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;autoReconnectForPools=true</entry> 
+    <entry key="db.maxIdle">5</entry>
+    <entry key="db.maxTotal">20</entry>
+    <entry key="db.maxWaitMillis">60000</entry>
+
+<!-- # impala db info -->
+<!-- jdbc.driver2 = com.cloudera.impala.jdbc41.Driver -->
+<!-- jdbc.url2 = jdbc:impala://100.127.160.142:21050/ix_db -->
+</properties>

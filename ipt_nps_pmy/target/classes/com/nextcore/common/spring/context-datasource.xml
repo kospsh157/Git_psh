@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        ">
+
+    <!-- DataSource config start -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="validationQuery" value="SELECT 1"></property>
+        <property name="driverClassName" value="#{jdbc['db.driverClassName']}"/>
+        <property name="url" value="#{jdbc['db.url']}"/>
+        <property name="username" value="#{jdbc['db.username']}"/>
+        <property name="password" value="#{jdbc['db.password']}"/>
+        <property name="maxIdle" value="#{jdbc['db.maxIdle']}"/>
+        <property name="maxTotal" value="#{jdbc['db.maxTotal']}"/>
+        <property name="maxWaitMillis" value="#{jdbc['db.maxWaitMillis']}"/>
+    </bean>
+    <!-- DataSource config end -->
+
+</beans>

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+
+div.wrap{width:100%; min-width:1280px;}
+header
+{
+	width: 100%;
+    margin: 0 auto;
+    padding: 0 50px;
+    height: 45px;
+    background: #fff;    
+    float: left;
+    background-color: #ebebeb;
+}
+/* section{width:90%; margin:0 auto; padding:50px; height:100%; background:#fff; } */
+
+/* 백승동 테스트 (layout)*/
+section{width:90%; margin:0 auto; padding:35px 50px; height:100%; background:#fff; overflow:hidden;}
+
+

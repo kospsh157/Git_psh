@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+
+    <comment>MyBatis Properties</comment>
+
+    <entry key="sqlmap.configLocation">classpath:com/nextcore/common/mybatis/mybatis-configuration.xml</entry>
+
+    <entry key="sqlmap.mapperLocation">classpath:com/nextcore/sqlmap/portal/**/*.xml</entry>
+
+</properties>

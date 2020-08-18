@@ -1,0 +1,274 @@
+/*Reset*/
+* { margin:0;	padding:0; }
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+abbr, address, big, cite, code, del, dfn, em, font, img, ins,q, s, samp, small, strike,
+strong, sub, sup, tt, var, b,u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: none 0; }
+* { font-size:12px; font-family:'nanum gothic', sans-serif; color:#505050;  }
+html body{height:100%; width:100%; background-color:#f7f7f7; }
+
+textarea { overflow:auto; }
+select, input, img, li { vertical-align: middle; text-align:center; outline:none;}
+address, caption, cite, code, dfn, em, strong, th, var { font-style : normal; font-weight : normal; }
+ul, li, ol { list-style-type: none;  }
+/* ul{ font-size:0px; }크롬이 차이가 나서 0px를 주고 가야한다 */
+
+legend,  caption { display: none; }
+hr { border-collapse:collapse; display:none; }
+
+
+
+
+a, a:link, a:visited, a:hover {	text-decoration:none;}
+
+
+.wrap{ height:100vh;}
+#leftContaner{min-width: 200px; height:100vh; background:#6595bd; /* box-shadow : 0px 3px 5px 2px #265174 inset; */ }
+#rightContaner{width:100%; height:100vh;}
+
+.contaner{ margin:10px 10px 0 10px;
+
+	}
+.contanerTop{ }
+
+.contanerMiddle{text-align:center;    }
+.contanerBottom{} /*footer 자리*/
+
+.guide{width:100%;}
+
+
+
+/* 공통*/
+
+.width100{width:100%;}
+
+.width3{width:31%;}
+.height3{height:188px;}
+
+
+.left { height:100%; width:100%; }
+
+
+td{vertical-align:top;}
+
+.scroll{overflow: scroll;}
+.y-scroll{overflow-y: scroll;}
+.x-scroll{overflow-x: scroll;}
+
+
+.margin-10{margin:10px;}
+.margin-T10{margin-top:10px;}
+.margin-R10{margin-right:10px;}
+.margin-B10{margin-bottom:10px;}
+.margin-L10{margin-left:10px;}
+
+.margin-5{margin:5px;}
+.margin-T5{margin-top:5px;}
+.margin-R5{margin-right:5px;}
+.margin-B5{margin-bottom:5px;}
+.margin-L5{margin-left:5px;}
+
+.margin-15{margin:15px;}
+.margin-T15{margin-top:15px;}
+.margin-R15{margin-right:15px;}
+.margin-B15{margin-bottom:15px;}
+.margin-L15{margin-left:15px;}
+
+.margin-T20{margin-top:20px;}
+
+.padding-10{padding:10px;}
+.padding-T10{padding-top:10px;}
+.padding-R10{padding-right:10px;}
+.padding-B10{padding-bottom:10px;}
+.padding-L10{padding-left:10px;}
+
+.padding-5{padding:5px;}
+.padding-T5{padding-top:5px;}
+.padding-R5{padding-right:5px;}
+.padding-B5{padding-bottom:5px;}
+.padding-L5{padding-left:5px;}
+
+.float-L{float:left;}
+.float-R{float:right;}
+.clear{clear:both;}
+
+.align-C{text-align:center;}
+.align-L{text-align:left;}
+.align-R{text-align:right;}
+
+
+strong{font-weight:bold;}
+.block{display:inline-block;}
+
+
+
+/*  menu */
+.menu a {cursor: pointer; font-size: 12pt;	color: white;font-weight:bold;height:60px; line-height:60px; margin-left:10px; }
+
+.menu {text-align: left; color: white;}
+.menu li{text-align: left;}
+
+.menu_icon{margin-right: 10px;}
+
+.sub{	background-color: #507796; box-shadow : 0px 0px 5px 2px #265174 inset;}
+
+.sub > li{	margin-left: 20px; }
+
+.sub > li > a{	text-decoration:none; height:50px; line-height:50px;/* text-shadow : 2px 2px 5px;*/}
+
+.sub > li > a:hover{	color: #00e3fe;}
+
+/* top */
+
+.logo{width: 100%; height:50px;  line-height:50px;background:#4f4f4f; color:#fff; font-weight:600; font-size:18pt; text-align: center; text-shadow : 2px 2px 5px #000;  /* box-shadow : 0px 3px 5px 2px #333 inset; */ }
+.logo a{color:#fff; font-weight:600; font-size:18pt;}
+
+.top{ height:50px; line-height:46px;   background:#ebebeb; /* box-shadow : 0px 0px 5px 2px #ccc inset; */ }
+.top a {font-weight:bold; font-size:10pt;}
+.top  input{ border-radius: 5px 5px; background:#dfdfdf; border:1px solid #c1c1c1; height:25px; text-align:left; padding-left:5px;}
+
+
+
+
+
+
+
+/* 연회색 상단 타이틀 박스 */
+
+.box{border:1px solid #cecece;  border-radius: 10px 10px; background:#ffffff; box-shadow : 0px 0px 5px 2px #dddddd ;
+
+	}
+.boxTitle{height:32px; line-height:32px; background:#f0f0f0;  border-top-left-radius: 10px ; border-top-right-radius: 10px ; border-bottom:1px solid #cecece; font-weight:600;      text-align:left; padding-left:10px;  }
+
+.boxConterner > li {float:left;}
+.box{float:left;  display:inline-block;}
+
+.box > li {float:left;}
+
+
+/* 진회색 상단 타이틀 박스 */
+
+.mainTableBox{  clear:both; border:1px solid #cecece;  border-radius: 10px 10px; background:#ffffff; box-shadow : 0px 0px 5px 2px #dddddd ;}
+.mainTableBoxTitle{height:32px; line-height:32px; background:#65676c;  color:#ffffff; border-top-left-radius: 10px ; border-top-right-radius: 10px ; border-bottom:1px solid #cecece; font-weight:600;      text-align:left; padding-left:10px; }
+.mainTableBoxCon{ display:block; width:100%;   }
+.mainTableBoxCon table{ text-align:center; width:100%;   }
+.mainTableBoxCon table th{background-color : #c4c4c4; border-bottom : 1px solid #c0c0c0; padding:5px  5px;}
+.mainTableBoxCon table td{ border-bottom : 1px solid #c0c0c0; padding:5px  5px; }
+
+
+
+.box2{display: block; border:1px solid #cecece;  border-radius: 10px 10px; background:#ffffff;}
+.box2Title{height:32px; line-height:32px;  color:#fff; text-align:center; background:#4f4f4f; /* border-top-left-radius: 10px ; border-top-right-radius: 10px ; */ border-bottom:1px solid #cecece; font-weight:600; }
+.box2Conterner{ display: block; }
+
+
+/* 대시보드 화면 */
+
+.count{ display:inline-block; width:100%; margin-top:25px; margin-bottom:25px;  background:#ffffff; }
+.count ul{ margin:0 auto;  }
+.count li{width:20%; float:left; font-weight:bold; }
+.countBorder1{width:40px; height:40px; line-height:30px; border:5px solid #e77353; color:#e77353; border-radius: 30px 30px; font-weight:600; font-size:15px;}
+.countBorder2{width:40px; height:40px; line-height:30px; border:5px solid #00baed; color:#00baed; border-radius: 30px 30px; font-weight:600; font-size:15px;}
+.countBorder3{width:40px; height:40px; line-height:30px; border:5px solid #ffef33; color:#ffef33; border-radius: 30px 30px; font-weight:600; font-size:15px;}
+.countBorder4{width:40px; height:40px; line-height:30px; border:5px solid #e34a5e; color:#e34a5e; border-radius: 30px 30px; font-weight:600; font-size:15px;}
+.countBorder5{width:40px; height:40px; line-height:30px; border:5px solid #75be65; color:#75be65; border-radius: 30px 30px; font-weight:600; font-size:15px;}
+
+.moTable{ }
+
+
+.moGroup{  background : #ebebeb;  border-radius: 5px 5px; border : 1px solid #d0d0d0; box-shadow : 0px 0px 3px 1px #ccc inset;}
+.moName{width:100px;text-align:center; line-height:100px; float:left; font-size: 20px; font-weight: bold;}
+.moBox{ height:100px; text-align:left; overflow-y: scroll; margin:2px; }
+
+.moGraph{}
+.moGraphName{}
+.moGraphBox{}
+
+
+
+input{border-radius: 5px 5px; border:1px solid #c1c1c1; height:25px; line-height:25px; text-align:left; padding-left:5px; box-shadow : 0px 0px 3px 1px #ccc inset; }
+
+input[type="radio"] {margin-right:5px; box-shadow : 0px 0px 0px 0px }
+
+select{border-radius: 5px 5px;   border:1px solid #c1c1c1; height:25px; line-height:25px;  box-shadow : 0px 0px 3px 1px #ccc inset}
+button{border-radius: 5px 5px; background:#2fcdad; border: 0px; height:25px; line-height:25px; color:#fff; font-weight:bold; cursor: pointer; text-align:center;
+padding-right:15px; padding-left:15px; margin-left:10px; box-shadow : 0px 0px 3px 1px #22a187 inset; background:linear-gradient(to bottom, #22b194, #25a58b); }
+
+
+/* 서브 화면 */
+
+.pageName{font-weight:bold; padding: 10px 0 15px 10px; font-size:11pt; }
+.pageNameColor{color:red; font-size:11pt;}
+
+.subTitle { margin:10px; font-weight:bold;}
+.subTitleColor{color:#6595bd;}
+
+.moNameList{font-size: 20px; font-weight: bold; margin:10px;}
+.moNameList li {width:100%; display:inline-block; padding:7px 0px; text-align:left; border-bottom:1px solid #d0d0d0;}
+
+
+.HorAlignCenter{ width:98%; margin:0 auto ; position:relative; left:50%; transform:translateX(-50%);}
+
+.searchBox{ display:block;background : #ebebeb; border : 1px solid #d0d0d0; padding:10px; box-shadow : 0px 0px 3px 1px #ccc inset; }
+.searchBox li{margin-top:7px; margin-bottom:7px;}
+
+.searchBox .searchSub {clear: both;margin: 10px; background:#f7f7f7; padding:10px;border-radius: 5px 5px; border:1px solid #c1c1c1;}
+
+
+.label{ font-weight:bold; margin-right:30px; height:25px; line-height:25px; }
+.form li{ display:block; }
+.form font{padding-right:15px;}
+
+/* 검색 form table 정렬 */
+
+.searchTable{display:block;  width:100%; margin:0 auto;  text-align:center; }
+.searchTable .label{ margin-left:20px;}
+.searchTable td{padding:10px;} /* border:1px solid red*/
+.searchTable .bt{padding-right:0px;}
+
+/* 검색 form 가로 */
+.searchHor{display:block;  width:95%; margin:0 auto;  text-align:center; }
+.searchHor  li{ display:inline-block;  width:100%; }/* border:1px solid red*/
+.searchHor div{ float:left;   }
+.searchHor .label{min-width:120px; margin-left:20px;}
+
+
+/* 검색 form 세로 */
+.searchVer {display:block;  width:95%; margin:0 auto ; text-align:center;  }
+.searchVer  li{text-align:left; display:inline-block;  width:100%; }/* border:1px solid blue;*/
+.searchVer .label{min-width:120px; margin-left:20px;}
+
+.searchVer table{}
+.searchVer td{padding:10px; }
+
+.searchSub select{ padding-left:10px; padding-right:10px; margin:0 10px;}
+
+
+
+
+.inputGroup{min-width:300px; margin-right:10px; text-align:left; display:inline;} /* border:1px solid green;  */
+
+
+
+
+
+.moGraphCon {height:275px;}
+.moGraphCon .moGraphTitle { margin:10px; font-weight:bold;}
+
+.date li{float:left; text-align:left;}
+
+
+.tableListBox{ display:block; border:1px solid #cecece;  border-radius: 10px 10px; background:#ffffff; padding:10px; box-shadow : 0px 0px 3px 1px #ccc inset;}
+
+.tableListBoxCon{ display:inline-block; width:100%;}
+.tableListBoxCon table{text-align:center; width:100%;   }
+.tableListBoxCon table th{background-color : #f7f7f7; border-bottom : 1px solid #dcdcdc; padding:10px; border-top:2px solid #6595bd;}
+.tableListBoxCon table td{ border-bottom : 1px solid #dcdcdc; padding:10px; }
+
+
+.SubGraph{width:100%; margin:0 auto ; text-align:center; position:relative; left:50%; transform:translateX(-50%);  }
+.SubGraph li{display:inline-block; text-align:left; width:48%; margin:10px;  }
+
+.SubGraph li .label {margin-left:20px;}
+
+.SubGraph li .moGraph{ border:1px solid #cecece;}

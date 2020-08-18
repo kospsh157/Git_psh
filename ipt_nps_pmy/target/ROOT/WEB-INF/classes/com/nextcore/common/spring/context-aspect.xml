@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+<!--     <aop:config> -->
+<!--         <aop:pointcut id="serviceMethod" expression="execution(* com.nextcore..*Service.*(..))" /> -->
+
+<!--         <aop:aspect ref="exceptionTransfer"> -->
+<!--             <aop:after-throwing throwing="exception" pointcut-ref="serviceMethod" method="transfer" /> -->
+<!--         </aop:aspect> -->
+<!--     </aop:config> -->
+
+<!--     <bean id="exceptionTransfer" class="egovframework.rte.fdl.cmmn.aspect.ExceptionTransfer"> -->
+<!--         <property name="exceptionHandlerService"> -->
+<!--             <list> -->
+<!--                 <ref bean="defaultExceptionHandleManager" /> -->
+<!--             </list> -->
+<!--         </property> -->
+<!--     </bean> -->
+
+<!--     <bean id="defaultExceptionHandleManager" class="egovframework.rte.fdl.cmmn.exception.manager.DefaultExceptionHandleManager"> -->
+<!--         <property name="patterns"> -->
+<!--             <list> -->
+<!--                 <value>**.*</value> -->
+<!--             </list> -->
+<!--         </property> -->
+<!--         <property name="handlers"> -->
+<!--             <list> -->
+<!--                 <ref bean="defaultHandler" /> -->
+<!--             </list> -->
+<!--         </property> -->
+<!--     </bean> -->
+
+<!--     <bean id="defaultHandler" class="com.nextcore.portal.common.exception.DefaultExceptionHandler" /> -->
+    <bean id="echoHandler" class="com.nextcore.portal.websocket.WebSocketHandler" />
+    <websocket:handlers>
+       <websocket:mapping handler="echoHandler" path="/echo" />
+       <websocket:sockjs />
+    </websocket:handlers>
+
+	
+</beans>
