@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>코로나 대시보드</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    
+    <style>
+    html, body{
+        margin:0;
+        height:100%;
+        overflow:hidden;
+    }
+    header, section, footer{
+        text-align: center;
+    }
+    ul{
+        text-align:left;
+        list-style:none;
+        font-size: 15px;
+        margin-top:100px;
+        padding:10px;
+        margin-left: 15px;
+    }
+    header{
+        width:90%;
+        float: right;
+        font-size: 30px;
+        border-bottom: 1px solid #ddd;
+        line-height: 55px;
+        height : 10%;
+        padding:0;
+        top:0;
+    }
+    aside{
+        position:fixed;
+        top:0;
+        margin-top: 5px;
+        left:0;
+        bottom:0;
+        padding:0;
+        width:10%;
+        height:100%;
+        background-color: #fff;
+        border-right:1px solid #ddd; 
+        cursor:default;
+    }
+    section{
+        border-bottom : 1px solid #ddd;
+        height : 80%;
+        line-height: 300px;
+        width: 90%;
+        float:right;
+    }
+    footer {
+        width:90%;
+        float:right;
+        border-bottom : 1px solid #ddd;           
+        height : 10%;
+        line-height : 55px;
+    }
+    .api1,.api2,.api3{
+        float:left;
+        width:31%;
+        margin: 0;
+        padding:10px;
+    }
+    .topSection{
+        height: 50%;
+    }
+    .bottomSection{
+        clear: both;
+        height: 50%;
+    }
+    
+    </style>
+    
+</head>
+<body>
+    
+    <header> 코로나 대시보드 </header>
+    <aside> 
+        <ul>
+            <li style="margin-bottom:20px;"><a href=#> 코로나 국내 현황 </a></li>
+            <li style="margin-bottom:20px;"><a href=#> 국내 성별 현황 </a></li>
+            <li style="margin-bottom:20px;"><a href=#> 세계 사망자 현황</a></li>
+            <li style="margin-bottom:20px;"><a href=#> 국내 도시별 증가현황 </a></li>
+        </ul>
+    </aside>
+    <section>
+        <div class="topSection">
+            <div class="api1">
+                <canvas id="koreaStatus" width="auto" height="auto"></canvas>
+            </div>
+                
+            <div class="api2">
+                <canvas id="koreaSexStatus" width="auto" height="auto"></canvas>
+            </div>
+
+            <div class="api3">
+                <h6 style="margin: 0;padding: 0; width: 140px;height: 10px;">세계 지역별 사망자수</h6>
+                <canvas id="worldStatus" width="auto" height="auto"></canvas>
+            </div>
+        </div>
+
+        <div class="bottomSection">
+            <canvas id="korCity" width="1200" height="270" ></canvas>
+            
+        </div>
+
+    </section>
+    <footer> copyright 박성호 for Code Interview</footer>
+
+    <!-- 데이타(한국현황) 받기 -->
+    <div class="jasonData1" style="display: none;"><%=jasonData1%></div>
+
+    <!-- 데이타(성별 현황) 받기 -->
+    <div class="jasonData2" style="display: none;"><%=jasonData2%></div>
+
+     <!-- 데이타(세계 현황) 받기 -->
+     <div class="jasonData3" style="display: none;"><%=jasonData3%></div>
+
+     <!-- 데이타(세계 현황) 받기 -->
+     <div class="jasonData4" style="display: none;"><%=jasonData4%></div>
+
+
+    <script>
+         /*
+          차트1 한국 현황
+            사망수(DEATH_CNT), 치료중수(CARE_CNT) 가로 막대그래프
+            확진자수(DECIDE_CNT), 격리해제수(CLEAR_CNT) 가로 막대그래프
+            기준일 (STATE_DT)
+        */
+        let jasonData1 = document.getElementsByClassName("jasonData1");
+        let jasonData1Text = jasonData1[0].textContent
+        // string to json
+        let string2Jason1 = JSON.parse(jasonData1Text)
+     
+
+        // 차트데이타 작성
+        let death = Number(string2Jason1.response.body.items.item[0].deathCnt._text)
+        let decide = Number(string2Jason1.response.body.items.item[0].decideCnt._text)
+        let care = Number(string2Jason1.response.body.items.item[0].careCnt._text)
+        let clear = Number(string2Jason1.response.body.items.item[0].clearCnt._text)
+        let tempDate = string2Jason1.response.body.items.item[0].stateDt._text
+        // 날짜 포맷
+        let year = tempDate.slice(0,4) + '년 '
+        let month = tempDate.slice(4,6) + '월 '
+        let day = tempDate.slice(6,8) + '일'
+        let date = year + month + day
+        
+       
+        // 차트js 
+        var ctx = document.getElementById('koreaStatus');
+        var myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['사망수', '확진자수', '치료중수', '격리해제수'],
+                datasets: [{
+                    label: "한국 " + date +" 상황",
+                    data: [death, decide, care, clear],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                       
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            // options: {
+            //     scales: {
+            //         yAxes: [{
+            //             ticks: {
+            //                 beginAtZero: true
+            //             }
+            //         }]
+            //     }
+            // }
+        });
+
+         /*
+          차트2 연령별성별 한국 현황
+            사망수(DEATH_CNT), 치료중수(CARE_CNT) 가로 막대그래프
+            확진자수(DECIDE_CNT), 격리해제수(CLEAR_CNT) 가로 막대그래프
+            기준일 (STATE_DT)
+        */
+
+        // 받아온 dom 요소에있는 문자열 데이타 빼오기
+        let jasonData2 = document.getElementsByClassName("jasonData2");
+        let jasonData2Text = jasonData2[0].textContent
+        // 문자열 데이타 다시 jason으로 변환
+        let string2Jason2 = JSON.parse(jasonData2Text)
+    
+
+        // 차트데이타 작성
+        // CONF_CASE 확진자   
+        // DEATH 사망자
+        let arr = string2Jason2.response.body.items.item
+        let arrLength = string2Jason2.response.body.items.item.length
+        let maleDecide = 0   //남자 확진자
+        let maleDeath = 0    //남자 사망자
+        let femaleDecide = 0 //여자 확진자
+        let femaleDeath = 0  //여자 사망자
+
+        for(let i=0; i<arrLength;i++){
+            let gubun = arr[i].gubun._text
+            if(gubun.indexOf('남성')===0) {
+                maleDecide = Number(arr[i].confCase._text)
+                maleDeath = Number(arr[i].death._text)
+            }
+            if(gubun.indexOf('여성')===0) {
+                femaleDecide = Number(arr[i].confCase._text)
+                femaleDeath = Number(arr[i].death._text)
+            }
+        }
+        // 차트js 
+        var ctx2 = document.getElementById('koreaSexStatus');
+        var myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['남성 확진자', '남성 사망자', '여성 확진자', '여성 사망자'],
+                datasets: [{
+                    label: "성별 확진자/사망자",
+                    data: [maleDecide, maleDeath, femaleDecide, femaleDeath],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+        });
+       
+
+        /*
+            차트3 세계 현황
+            필요 변수 
+            areaNm :  대륙명
+            stdDay :  기준날짜
+            natDefCnt : 나라별 확진자수
+            natDeathCnt : 나라별 사망자수
+            
+        */
+        let jasonData3 = document.getElementsByClassName("jasonData3");
+        let jasonData3Text = jasonData3[0].textContent
+        // string to json
+        let string2Jason3 = JSON.parse(jasonData3Text)
+     
+
+        // 차트 데이터 가공
+        let chartArr3 = string2Jason3.response.body.items.item
+        let stdDay = chartArr3[0].stdDay._text
+        let africa = {
+            deCnt:0,
+            deathCnt:0
+        }
+        let eu = {
+            deCnt:0,
+            deathCnt:0
+        }
+        let america = {
+            deCnt:0,
+            deathCnt:0
+        }
+        let asia = {
+            deCnt:0,
+            deathCnt:0
+        }
+        let middle = {
+            deCnt:0,
+            deathCnt:0
+        }
+        let etc = {
+            deCnt:0,
+            deathCnt:0
+        }
+       
+
+        for(let i = 0; i<chartArr3.length; i++){
+            let nation = chartArr3[i].areaNm._text.trim()
+            if(nation==='아프리카'){
+                africa.deCnt += Number(chartArr3[i].natDefCnt._text)
+                africa.deathCnt += Number(chartArr3[i].natDeathCnt._text)
+            }
+            else if(nation==='유럽'){
+                eu.deCnt += Number(chartArr3[i].natDefCnt._text)
+                eu.deathCnt += Number(chartArr3[i].natDeathCnt._text)
+            }
+            else if(nation==='아시아'){
+                asia.deCnt += Number(chartArr3[i].natDefCnt._text)
+                asia.deathCnt += Number(chartArr3[i].natDeathCnt._text)
+            }
+            else if(nation==='아메리카'){
+                america.deCnt += Number(chartArr3[i].natDefCnt._text)
+                america.deathCnt += Number(chartArr3[i].natDeathCnt._text)
+            }else if(nation==='중동'){
+                middle.deCnt += Number(chartArr3[i].natDefCnt._text)
+                middle.deathCnt += Number(chartArr3[i].natDeathCnt._text)
+            }else {
+                etc.deCnt += Number(chartArr3[i].natDefCnt._text)
+                etc.deathCnt += Number(chartArr3[i].natDeathCnt._text)
+            }
+        }
+
+      
+        // 차트.js 시작 (세계 대륙별 사망자 수)
+        var ctx3 = document.getElementById('worldStatus');
+        var myChart3 = new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['아프리카', '아메리카', '중동', '유럽', '아시아','기타'],
+                datasets: [{
+                    label:  stdDay + " 세계 사망자 상황",
+                    data: [africa.deathCnt, america.deathCnt, middle.deathCnt, eu.deathCnt, asia.deathCnt, etc.deathCnt],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(34, 200, 100, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(34, 200, 100, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+     
+        }); // 차트 끝 
+
+
+
+        // 차트4 시작 
+        let jasonData4 = document.getElementsByClassName("jasonData4");
+        let jasonData4Text = jasonData4[0].textContent
+        // string to json
+        let string2Jason4 = JSON.parse(jasonData4Text)
+       
+        // 데이터 가공
+        /*
+            gubun : 지역 
+            incDec : 전날대비 확진자 증가수
+            stdDay : 날짜 
+
+            서울{
+                날짜
+                증가수
+            }
+        */
+        // 데이터셋 배열을 지역마다 생성
+        let seoul =[]
+        let jeju =[]
+        let gyungi = []
+        let daejun = []
+        let gwangju = []
+        let incheon = []
+        let daegu = []
+        let busan = []
+
+        
+        // 데이터를 보고 지역 정보 객체를 생성해서 해당 지역 배열에 추가
+        let localObj = function(incDec, createDt, arr){
+            this.x = createDt
+            this.y = incDec
+            return {x,y}
+        }
+        console.log(string2Jason4)
+        
+
+        // 포문으로 돌면서 각자 위치에 맞는 배열에 x,y값으로 날짜와 확진자증감수 입력 
+        let chartArr4 = string2Jason4.response.body.items.item
+        for(let i=0; i<chartArr4.length; i++){
+            let local = chartArr4[i].gubun._text.trim()
+            let increase = Number(chartArr4[i].incDec._text.trim())
+            let date = chartArr4[i].createDt._text.trim().slice(0,10)
+            
+            if(local === '서울'){
+                seoul.unshift(localObj(increase, date, seoul))
+            }
+            if(local === '제주'){
+                jeju.unshift(localObj(increase, date, seoul))
+            }
+            
+            if(local === '경기'){
+                gyungi.unshift(localObj(increase, date, seoul))
+            }
+          
+            if(local === '대전'){
+                daejun.unshift(localObj(increase, date, seoul))
+            }
+            if(local === '광주'){
+                gwangju.unshift(localObj(increase, date, seoul))
+            }
+            if(local === '인천'){
+                incheon.unshift(localObj(increase, date, seoul))
+            }
+            if(local === '대구'){
+                daegu.unshift(localObj(increase, date, seoul))
+            }
+            if(local === '부산'){
+                busan.unshift(localObj(increase, date, seoul))
+            }
+        }
+
+        // 차트.js 시작 (도시별 전날대비 확진자 증가수)
+        var ctx4 = document.getElementById('korCity');
+        var myChart4 = new Chart(ctx4, {
+            type: 'line',
+            data:{
+                datasets: [
+                    {
+                        label:"서울",
+                        data:seoul,
+                        borderColor:"red",
+                        backgroundColor:"transparent",
+                    },
+                    {
+                        label:"제주",
+                        data:jeju,
+                        borderColor:"blue",
+                        backgroundColor:"transparent",
+                    },
+                    {
+                        label:"경기",
+                        data:gyungi,
+                        borderColor:"pink",
+                        backgroundColor:"transparent",
+                    },
+                    {
+                        label:"대전",
+                        data:daejun,
+                        borderColor:"jade",
+                        backgroundColor:"transparent",
+                    },
+                    {
+                        label:"광주",
+                        data:gwangju,
+                        borderColor:"yellow",
+                        backgroundColor:"transparent",
+                    },
+                    {
+                        label:"인천",
+                        data:incheon,
+                        borderColor:"green",
+                        backgroundColor:"transparent",
+                    },
+                    // {
+                    //     label:"대구",
+                    //     data:daegu,
+                    //     borderColor:"orange",
+                    //     backgroundColor:"transparent",
+                    // },
+                    {
+                        label:"부산",
+                        data:busan,
+                        borderColor:"violet",
+                        backgroundColor:"transparent",
+                    }
+                ],
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    xAxes: [ {
+                        type: 'time',
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '날짜'
+                        },
+                        ticks: {
+                            major: {
+                            fontStyle: 'bold',
+                            fontColor: '#FF0000'
+                            }
+                        }
+                    } ],
+                    yAxes: [ {
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '전날대비 확진자 증가수'
+                        }
+                    } ]
+                }
+            }
+           
+        });
+            
+            
+            
+            
+
+
+
+
+    </script>
+</body>
+</html>

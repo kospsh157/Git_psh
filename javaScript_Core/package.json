@@ -1,0 +1,17 @@
+{
+  "name": "javascript_core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Object_copy.js",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+  
+}
