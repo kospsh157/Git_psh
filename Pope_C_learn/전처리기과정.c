@@ -7,3 +7,22 @@
     5. 이렇게 최종적으로 컴파일의 기본단위인 트랜슬레이션유닛 코드 생성
 
 */
+
+
+// 트랜슬레이션 유닛을 보는 방법
+/*
+clang -std=c89 -W -Wall -pedantic-errors -E adder.c   >> -E 플래그를 붙이면 됨
+>> 전처리기까지만 딱 돌리고 그 이후 빌드과정는 하지 않음 
+
+
+파일로 저장하려면
+clang -std=c89 -W -Wall -pedantic-errors -E adder.c > adder.pre 
+출력리디렉션 사용해서 adder.pre 파일로 저장됨 
+ 
+
+
+*/ 
+
+
+
+// 이제 이 트랜슬레이션 유닛 파일은 컴파일러를 통해 어셈블리어로 변환될거임 
