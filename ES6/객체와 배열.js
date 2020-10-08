@@ -24,9 +24,10 @@
 const name = 'mike'
 const obj = {
     age : 21,
-    name,
+    name,   // 이 부분은은 name 이 이미 mike 라는 값을 가지는 변수 이므로  name : 'mike' 와 같이 동작한다.
     getName(){console.log(this.name)}
 }
+
 
 //2. 콘솔 로그 출력시 단축 속성명 활용
 const name = 'mike';
@@ -38,7 +39,6 @@ console.log({name, age}) // 간편!
 // 계산된 속성명
 /*
     1. 객체의 속성명을 동적으로 결정하기 위해 나온 문법이다.
-    
 
 */
 
@@ -54,8 +54,5 @@ const obj1 = function(keyName, value){
 const obj2 = function(keyNmae, value){
     return {[keyName] : value} 
 }
-
-
-
 
 

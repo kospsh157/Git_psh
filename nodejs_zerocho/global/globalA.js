@@ -12,3 +12,4 @@ module.exports = () => {
     return global.message;  // global 은 전역 객체라서 여기다가 변수를 담아서 보내기도 한다. 그러나 추천하는 방식은 아니다.
 }
 
+
