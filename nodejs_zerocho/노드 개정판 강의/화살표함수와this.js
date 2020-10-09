@@ -57,7 +57,7 @@ button.addEventListener('click', function() {
 
 // 굳이 화살표 함수를 써야한다면 다음과 같이 해야 의도대로 작동한다.
 button.addEventListener('click', (e) => {
-    console.log(e.target.textContext);
+    console.log(e.target.textContext); 
 });
 
 // 따라서 결론은
