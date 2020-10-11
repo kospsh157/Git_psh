@@ -20,13 +20,13 @@ async function main(){
 main().then((result2) => {
     console.log(result2);
 })
+// then()으로 받기 싫으면 
+const result = await main();            // 으로 해서 await으로 받아서 사용할 수 있다. 
+
+
+
+
 
 // 또한 주의점으로 await을 쓰면 reject()가 없어서 try catch문으로 감싸서 요청에 실패했을 경우도 대비하는게 좋다.
 
 // for await 구문을 사용하면 then()을 알아서 붙여서 반복문으로 돌려서 사용한다. 
-
-
-
-
-
-
