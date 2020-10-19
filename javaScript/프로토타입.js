@@ -57,6 +57,16 @@ const someUser = {
 
 
 
+// obj 프로토타입 
+let obj = {};
+alert( obj ); // "[object Object]" ?
+
+// 여기서 obj의 prototype 프로퍼티가 무엇인지? 
+
+
+
+
+
 
 
 
