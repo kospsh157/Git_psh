@@ -169,7 +169,42 @@ Rabbit.prototype = {
     eats : true
 }
 
+<<<<<<< HEAD
 let rabbit = new Rabbit();
+=======
+// obj 프로토타입 
+let obj = {};
+alert( obj ); // "[object Object]" ?
+
+// 여기서 obj의 prototype 프로퍼티가 무엇인지? 
+
+
+
+
+
+
+// 잠깐 확인하고 넘어갈 것들 
+// 모든 함수는 prototype 프로퍼티를 가지고 있다. 
+// 모든 인스턴스는 __proto__ 프로퍼티를 가지고 있으며 이 프로퍼티는 생성자함수의 prototype 프로퍼티를 참조한다.
+
+// 아무 함수 생성
+function func1(){};
+const func2 = function(){};
+
+// 그 함수들의 프로퍼티 확인 
+console.log(func1.__proto__);           // function(){native code}
+console.log(func2.__proto__);           // function(){native code}
+
+console.log(func1.prototype);           // {...}
+console.log(func2.prototype);           // {...}
+
+// 특이한 점
+console.log(func1.prototype === func2.prototype);    //false
+console.log(func1.__proto__ === func2.__proto__);   //true  왜 true 가 나오는지 모르겠다. 
+
+
+
+>>>>>>> 84dd93e8577d3b580bbf64069136beb0c4b86af8
 
 
 // 1. Rabbit.prototype = {};            // true
