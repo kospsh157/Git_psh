@@ -2,6 +2,8 @@
 // 스택 호출에서는 다음 코드를 바로 실행한다. 
 // 이와 같은 문제를 피하고자 콜백함수방식의 코딩이 나왔다.
 
+const { getPackedSettings } = require("http2");
+
 // 함수를 다음과 같이 정의한다.
 function getData(callBackFunc){
     $.get("https//:요청주소",function(response){
@@ -46,6 +48,10 @@ $.get('url', function(response){
     });
 });
 
+
+
+
+
 // 위를 promise를 사용하지 않고 코딩적으로 콜백지옥을 풀면 다음과 같다.
 // auth(), display(), parseValue() 함수는 이미 정의되어 있으며, 각각 역할은
 // parseValue()는 요청해서 받은 그 결과값을 파싱해서 id를 구해오고
@@ -68,5 +74,29 @@ $.get('url 주소',function(response){
 })
 // 콜백지옥을 푸는 요령은 콜백 때 썼던 익명함수를 ~done을 붙여서 새로운 함수로 다시 정의해주는 것이다.
 // 따라서 정확히 콜백함수의 쓰인 익명함수의 수만큼 새로운 ~done 함수들이 필요하다.
+
+
+
+
+
+
+myPromise( (resolve, reject, data) => {
+    
+    // 이번엔 getApi받아온 데이터를 다른 서버에 보내서 잘 갔나 응답도 받아봅시다.
+    let result = 0;               // 우선 result 변수를 하나 잡고 여기에다 서버의 응답을 받아봅시다.
+    postApi("https://어디가에요청.com/api", data).then(serverResult => {
+        result = serverResult;    // 위의 result변수에다가 서버가 준 응답결과를 저장한다 칩시다.
+                                  // 성공해서 서버에서 데이터를 잘 받았다 치면 1을 준다 치고, 실패하면 -1를 준다고 합시다.
+    });
+    // result의 내용물을 보면 1, 0, -1 에 따라 결과를 알 수 있겠죠?
+    if(result) {
+        resolve(result);          // 성공했으므로 resolve()함수를 호출해서 값을 저장해줍시다.
+    }else{
+        reject(new Error("0, -1 이든 쨋든 서버에서 데이터를 잘 받지 못했네요")); // 실패시 에러문구를 보여줍시다.
+    }
+    return result;
+});
+
+
 
 

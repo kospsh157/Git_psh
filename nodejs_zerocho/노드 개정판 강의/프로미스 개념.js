@@ -85,6 +85,25 @@ getHen()
 .then( egg => cook(egg))            // .then(cook)
 .then( meal => console.log(meal));  // .then(console.log)
 
+
+// 위를 풀어서 다시 보면
+getHen()
+.then( hen => {
+    return getEgg(hen);
+})
+
+getHen()
+.then ( hen => getEgg(hen));
+
+getHen()
+.then(getEgg); // 이렇게 생각하면 쉽다 : 리턴이 되고, 그 리턴받은 값의 변수명과 다시 그것을 어떤함수의 파라미터로 다시또 넣을때
+               // 리턴변수명 === 어떤함수(리턴변수명) 일때 >> 그냥 어떤함수 이름만 적고 ()를 적지 않고 호출하면 된다.
+
+
+
+
+               
+
 // 위를 아래와 같이 생략해서 쓸 수 있음. 
 // then()의 리턴값이 있고 그 값을 다시 다른 함수의 파라미터에 넣어서 리턴 시킬 때 축약할 수 있음
 getHen()  // 한줄로하면 가독성이 나쁘므로 축약으로 쓸 때 최소한 이렇게 나누어서 작성하자

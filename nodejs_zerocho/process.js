@@ -35,7 +35,6 @@ const secretId = process.env.SECRET_ID; // 이런식으로 불러다가 쓰고 S
 
 setImmediate( ()=>{
     console.log('immediate');
-
 })
 
 process.nextTick(()=>{
@@ -43,8 +42,7 @@ process.nextTick(()=>{
 })
 
 setTimeout(()=>{
-    console.log('timeout')
-
+    console.log('timeout');
 }, 0)
 
 // 추가로, Promise도  다른 콜백들 보다 우선시되고, 이런 것들은 따로 마이크로태스크 큐에서 따로 돈다. 
@@ -54,6 +52,7 @@ Promise.resolve().then(()=> console.log('promise'));
 
 // process.nextTick를 더 선호하는 개발자도 있다. 비동기 처리를 할 때, 그러나 이런 마이크로태스크를 너무 많이 재귀호출하게 되면
 // 이벤트 루프는 다른 콜백함수보다 마이크로태스크 큐에 있는 콜백함수들을 더 중요시 여기어 다른 콜백함수들이 실행되지 않을 수 있다.
+
 
 
 // process.exit(코드) // 실쟁 중인 노드 프로세스를 종료한다. 서버에서 하면 서버가 멈추므로 서버에서는 거의 사용하지 않는다.
