@@ -169,9 +169,7 @@ Rabbit.prototype = {
     eats : true
 }
 
-<<<<<<< HEAD
 let rabbit = new Rabbit();
-=======
 // obj 프로토타입 
 let obj = {};
 alert( obj ); // "[object Object]" ?
@@ -191,7 +189,7 @@ alert( obj ); // "[object Object]" ?
 function func1(){};
 const func2 = function(){};
 
-// 그 함수들의 프로퍼티 확인 
+// 그 함수들의 프로퍼티 확인   
 console.log(func1.__proto__);           // function(){native code}
 console.log(func2.__proto__);           // function(){native code}
 
@@ -200,12 +198,11 @@ console.log(func2.prototype);           // {...}
 
 // 특이한 점
 console.log(func1.prototype === func2.prototype);    //false
-console.log(func1.__proto__ === func2.__proto__);   //true  왜 true 가 나오는지 모르겠다. 
+console.log(func1.__proto__ === func2.__proto__);    //true  왜 true 가 나오는지 모르겠다. 
 
 
 
->>>>>>> 84dd93e8577d3b580bbf64069136beb0c4b86af8
-
+  
 
 // 1. Rabbit.prototype = {};            // true
 // 2. Rabbit.prototype.eats = false;    // false

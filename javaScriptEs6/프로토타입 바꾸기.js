@@ -100,7 +100,6 @@ console.log(relative.getGreeting());                // error!
 
 
 // 이제 super() 키워드를 써보자 
-
 let person = {
     getGreeting() {
         return "Hello";

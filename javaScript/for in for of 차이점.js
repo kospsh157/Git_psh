@@ -32,3 +32,4 @@ arr.forEach( (value) => {
     // 배열의 각각의 원소마다 해야할 일을 콜백함수에 적는다. 
     console.log(value);
 })
+
