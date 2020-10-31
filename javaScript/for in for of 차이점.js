@@ -33,3 +33,13 @@ arr.forEach( (value) => {
     console.log(value);
 })
 
+// for of 주의점
+/*
+    1. 먼저 해당 컬랙션에 Symbol.iterator 가 존재해야한다.
+    2. 인덱스를 출력하는게 아니라 인덱스에 해당되는 value값을 반복한다.
+    3. 만약 Symbol.iterator 가 없는 객체나 컬랙션을 돌리면 없는 함수라고 나온다.
+    4. 그냥 객체에 대해서는 in을 사용하고 배열에 대해서는 of 를 사용하자
+
+*/
+
+
