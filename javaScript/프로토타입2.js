@@ -20,7 +20,7 @@ console.log(func1.__proto__ === func2.__proto__);    //true  왜 true 가 나오
 
 // 그럼 서로 참조 관계이니깐 이건 같아야 한다.
 const func1_instance = new func1();
-const func2_instance = new func2(); 
+const func2_instance = new func2();
 
 
 // __proto__가  생성자의 prototype 를 참조하므로 둘은 서로 같다.
@@ -28,18 +28,4 @@ console.log(func1.prototype === func1_instance.__proto__);     //true
 console.log(func2.prototype === func2_instance.__proto__);     //true
 
 
-// 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//                     
