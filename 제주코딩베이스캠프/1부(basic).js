@@ -41,3 +41,58 @@ arr.splice(2, 0, 1000);
 
 // 답안 
 arr.splice(2, 0, 1000);
+
+
+
+
+// 3
+// 다음 출력 값으로 올바른 것은?
+var arr = [100, 200, 300];
+console.log(typeof(arr));
+
+// undefined, string, number, object 중에 선택
+
+// 내 답안
+// object
+
+
+// 답안
+// object 
+// undefined, string, number 는 모두 primitive type (기본자료형) 이다.
+
+
+
+// 4
+// 다음 코드의 출력 값으로 알맞는 것은?
+var a = 10;
+var b = 2;
+
+for(var i = 1; i < 5; i+=2){
+    a += i;
+}
+
+console.log(a + b);
+
+// 내 답안 
+// 16
+
+// 답안
+// 16 
+
+
+
+
+// 5 
+// 다음은 자바스크립트 문법 중에서 false로 취급하는 것들이다.
+// false로 취급하지 않는 것이 하나 있다. true를 찾아보아라.
+// NaN, 1, "", 0, undefined
+
+
+// 내 답안
+// 1
+
+// 답안 
+// 1
+// 자바스크립트에서는 null, undefined, 0, 빈 문자열, NaN, false를 제외하고는 모두 참인 값으로 인정한다.
+
+
