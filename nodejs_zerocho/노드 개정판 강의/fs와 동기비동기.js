@@ -35,13 +35,13 @@ fs.readFile('./write.txt', "파일이 없을 경우 새로 만들어버립니다
     })
     .then( (data) => {
         console.log(data.toString());
-
     })
     .catch( (err) => {
         throw err;
     })
 
 
+    
 
 
 

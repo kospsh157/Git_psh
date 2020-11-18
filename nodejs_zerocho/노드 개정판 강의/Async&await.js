@@ -25,7 +25,7 @@ const result = await main();            // 으로 해서 await으로 받아서 �
 
 
 
-
+// 
 
 // 또한 주의점으로 await을 쓰면 reject()가 없어서 try catch문으로 감싸서 요청에 실패했을 경우도 대비하는게 좋다.
 

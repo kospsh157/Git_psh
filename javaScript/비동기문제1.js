@@ -1,3 +1,4 @@
+
 function test() {
     const promiseFunction = () =>
         new Promise((resolve) => setTimeout(() => resolve("result"), 1000));
@@ -22,5 +23,7 @@ test();
 // https://velog.io/@hanameee/배열에-비동기-작업을-실시할-때-알아두면-좋을법한-이야기들
 
 
-
 // 위에 답이 있다.
+
+
+
