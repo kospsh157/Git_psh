@@ -38,7 +38,7 @@ http.createServer( (req, res) => {
 */
 
 
-// res 객체
+// res.writeHead 객체
 /*  
     res.writeHead와 res.write, res.end메서드가 있다.
     res.writeHead는 응답에 대한 정보를 기록하는 메서드이다.
