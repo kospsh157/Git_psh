@@ -35,10 +35,22 @@ http.createServer(async (req, res) => {
             return req.on('end', () => {
                 console.log('POST 본문 (Body):', body);
                 const {name} = JSON.parse(body);
+                // JSON.parse() 메서드는 JSON 파일이나 문자열을 js객체로 반환한다.
+                // 여기서는 body를 js객체로 바꾸고 그 객체의 name key를 빼서 const name 
+                // 선언하고 그 name에다가 객체의 name값을 대입한 것이다.
+
                 const id = Date.now();
                 users[id] = name;
+                // users는 여기서 데이터베이스를 대신하는 js 객체이다.
+                // users의 키값의 이름으로 고유명을 정하기 위해 코드가 실행되는 시점의 시간을 넣고,
+                // 그 키 value값으로 프론트으로 부터 전달받은 name값을 넣는다.
+
                 res.writeHead(201);
                 res.end('등록 성공');
+                // users 라는 DB대체 저장소에 데이터를 추가하고 응답을 보내고 함수를 종료한다.
+                // 프론트단에서는 응답이 오면 바로 getUser() 함수를 호출해서 다시 서버로부터 
+                // 새롭게 바뀐 users js저장소를 가져간다.
+                // 그리고 프론트에서는 다시 이를 밑에 list요소에 뿌린다.
             });
         }else if(req.method === 'DELETE'){
             if(req.url.startsWith('/user/')){

@@ -60,3 +60,20 @@ document.getElementById('form').addEventListener('submit', async (e) => {
     }
     e.target.username.value = '';
 });
+
+
+
+// 등록 버튼을 누르면 
+/*
+    1. 폼에다가 'submit' 리스너를 등록한다.
+    2. e.preventDefault(); >>> submit 이벤트가 작동되도 페이지가 넘어가는 것은 방지한다.
+    3. const name = e.target.username.value; 이벤트가 일어나는 element의 username 태그네임을 찾고 
+    그 요소의 value 를 가져와서 name 변수에 담는다.
+    4. name 변수에 아무거도 담기지 않았다면, alert창을 띄운다.
+    5. name 변수에 문자열이 담겨있다면, axios를 호출해서 서버와 통신을 한다.
+    이때 POST 방식으로 요청주소는 localhost:8082/user 이다
+    또한 {name}로 name을 같이 첨부해서 보낸다.
+    주의할 점은 axios에 await을 썼다는 것이다. 그 이유는 통신이 끝날때까지 기달리고 
+    getUser() 함수를 호출하라는 뜻이다. 
+    6. 통신관련 작업에는 항상 try/catch 문으로 감싸서 오류를 확인해주자.
+*/
