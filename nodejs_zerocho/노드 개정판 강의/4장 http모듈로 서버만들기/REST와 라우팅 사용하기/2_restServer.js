@@ -29,6 +29,8 @@ http.createServer(async (req, res) => {
             let body ='';
             // 요청의 body를 stream형식으로 받음
             req.on('data', (data) => {
+                console.log('data 이벤트 발동');
+                console.log(data);
                 body += data;
             });
             // 요청의 body를 다 받은 후 실행됨
@@ -39,6 +41,8 @@ http.createServer(async (req, res) => {
                 // 여기서는 body를 js객체로 바꾸고 그 객체의 name key를 빼서 const name 
                 // 선언하고 그 name에다가 객체의 name값을 대입한 것이다.
 
+                // 원래는 여기부터 DB 관련 코드가 나와야 할 것이다.
+                // 여기서는 그냥 js객체로 했다.
                 const id = Date.now();
                 users[id] = name;
                 // users는 여기서 데이터베이스를 대신하는 js 객체이다.
