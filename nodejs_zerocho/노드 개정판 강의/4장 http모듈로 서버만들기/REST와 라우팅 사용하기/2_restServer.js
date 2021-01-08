@@ -7,7 +7,13 @@ http.createServer(async (req, res) => {
         console.log(req.method, req.url);
         if(req.method === 'GET'){
             if(req.url === '/'){
+                // fs 모듈로 보낼 html 파일을 버퍼로 읽는다.
+                // data 변수에 저장한다.
                 const data = await fs.readFile('./2_restFront.html');
+                // 이제 응답을 하자 
+                // 응답 헤더를 먼저 작성해주고
+                // 위의 html파일을 res.end()로 보내면서 return 하자
+                // 주의할 점은 받드시 return으로 함수를 종료해야한다는 점이다.
                 res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
                 return res.end(data);
             }else if(req.url === '/about'){
@@ -16,6 +22,10 @@ http.createServer(async (req, res) => {
                 return res.end(data);
             }else if(req.url === '/users'){
                 res.writeHead(200, {'Content-Type':'text/plain; charset=utf-8'});
+
+                // 여기서 /users 요청이 들어오면, DB대체 저장소인 users객체를 JSON 문자열로
+                // 바꾸고 그것을 res.red() 메서드로 보낸다.
+                // 그럼 프론트단에서 users JSON 문자열을 받고 알아서 데이터를 사용할 것이다.
                 return res.end(JSON.stringify(users));
             }
             // 주소가 /도 /about도 /users도 아니면
@@ -38,7 +48,7 @@ http.createServer(async (req, res) => {
                 console.log('POST 본문 (Body):', body);
                 const {name} = JSON.parse(body);
                 // JSON.parse() 메서드는 JSON 파일이나 문자열을 js객체로 반환한다.
-                // 여기서는 body를 js객체로 바꾸고 그 객체의 name key를 빼서 const name 
+                // 여기서는 body를 js객체로 바꾸고 그 객체의 name key를 빼서 const name으로 변수
                 // 선언하고 그 name에다가 객체의 name값을 대입한 것이다.
 
                 // 원래는 여기부터 DB 관련 코드가 나와야 할 것이다.
@@ -107,7 +117,7 @@ http.createServer(async (req, res) => {
     따라서 다음에 코드가 이어지는 경우에는 return을 써서 명시적으로 함수를 종료한다.
     return을 붙이지 않으면, res.end같은 메서드가 여러 번 실행된다면, 
     Error : Can't set headers after they are sent to the client.
-    에러가 발생한다.
+    에러가 발생한다. 
 
     9. HTTP 요청 메서드 마다 분기점이 다른 것을 확인.
     10. 데이터베이스 대용으로 users라는 객체를 선언하여 사용자 정보를 저장했다.
