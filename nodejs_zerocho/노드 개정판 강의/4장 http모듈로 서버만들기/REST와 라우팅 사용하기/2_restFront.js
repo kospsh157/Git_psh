@@ -1,7 +1,7 @@
 async function getUser() { // 로딩 시 사용자 정보를 가져오는 함수
     try{
-        // getUse() 함수가 실행되면 일단은 무조건 
-        // axios.get(/users)로 /users로 요청을 보낸다. 
+        // getUse() 함수가 실행되면 일단은 무조건
+        // axios.get(/users)로 /users로 요청을 보낸다.
         // 이 요청은 서버에 있는 users 객체를 받아오는 요청이다.
         
         const res = await axios.get('/users');
@@ -70,11 +70,19 @@ async function getUser() { // 로딩 시 사용자 정보를 가져오는 함수
                     console.error(err);
                 }
             });
+
+            // 삭제 버튼을 만든다.
             const remove = document.createElement('button');
             remove.textContent = '삭제';
+            // 삭제 버튼 리스너를 달아준다.
             remove.addEventListener('click', async () => {  // 삭제 버큰 클릭
                 try{
+                    // 어떤 것을 삭제 할 지 알아야 하는데, 
+                    // 여기선 그 고유값으로 users의 key값을 선택했다.
+                    // 아직 Object.keys(users).map(key)의 콜백함수 안이라는 것을 잊지말자
+                    // 때문에 users의 프로퍼티 하나하나 마다 고유 key값으로 삭제 및 등록 리스너를 만들 수 있다.
                     await axios.delete('/user/' + key);
+                    // 서버의 users 객체 프로퍼티들이 바뀌었으니 다시 불러온다.
                     getUser();
                 }catch(err){
                     console.error(err);

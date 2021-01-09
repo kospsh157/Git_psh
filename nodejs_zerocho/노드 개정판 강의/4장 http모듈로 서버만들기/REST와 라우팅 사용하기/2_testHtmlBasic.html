@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+<body>
+ 
+<script type="text/javascript">
+const div1 = document.createElement('div');
+const div2 = document.createElement('div');
+const div3 = document.createElement('div');
+const div4 = document.createElement('div');
+const span1 = document.createElement('span');
+const span2 = document.createElement('span');
+const span3 = document.createElement('span');
+const span4 = document.createElement('span');
+
+span1.textContent = '스판1';
+span2.textContent = '스판2';
+span3.textContent = '스판3';
+span4.textContent = '스판4';
+
+div1.appendChild(span1);
+div2.appendChild(span2);
+div3.appendChild(span3);
+div4.appendChild(span4);
+// 의문점 : 왜 나중에 append 해준 span만 브라우저에 나타날까?
+
+
+div1.appendChild(span1);
+div1.appendChild(span2);
+div1.appendChild(span3);
+div1.appendChild(span4);
+// span은 계속 어펜드 시키면 가로로 칸이 쌓인다. (div와 같이 가로 한 줄을 다 먹지 않는다.)
+
+
+
+
+
+
+document.body.appendChild(div1);
+document.body.appendChild(div2);
+document.body.appendChild(div3);
+document.body.appendChild(div4);
+// div을 어펜드시키면 세로로 칸으로 쌓인다.(가로열을 div 하나가 다 먹는다.)
+
+
+
+</script>
+</body>
+</html>
