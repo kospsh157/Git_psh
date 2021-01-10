@@ -114,17 +114,26 @@ async function getUser() { // 로딩 시 사용자 정보를 가져오는 함수
 window.onload = getUser; // 화면 로딩 시 getUser 호출
     // 폼 제출 (submit) 시 실행
 document.getElementById('form').addEventListener('submit', async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // submit으로 인한 페이지 넘김 방지
+    
     const name = e.target.username.value;
+    // 이벤트가 발생된, 즉 여기서는 클릭 이벤트가 발생된 form요소의 username태그의 value 값을 name에 넣는다.
     if(!name){
         return alert('이름을 입력하세요.');
     }
     try{
+        // 등록이란 무언가를 서버에 전달해서 서버에 데이터에 입력시켜야한다. 
+        // 따라서 당연히 axios 통신이 일어나야하고
+        // 당연히 통신에는 try/catch 구문이 있어야 한다.
         await axios.post('/user', {name});
+
+        // 서버의 users 객체가 달라졌으니 다시 불러서 프론트단에 뿌려줘야 한다.
         getUser();
     }catch(err){
         console.error(err);
     }
+    
+    // 모든 처리가 끝나면 등록이 잘 된 것이므로, 이름을 쓰는 input 태그의 내용은 빈칸으로 비워줘야한다.
     e.target.username.value = '';
 });
 

@@ -11,40 +11,80 @@ const div1 = document.createElement('div');
 const div2 = document.createElement('div');
 const div3 = document.createElement('div');
 const div4 = document.createElement('div');
+
 const span1 = document.createElement('span');
 const span2 = document.createElement('span');
 const span3 = document.createElement('span');
 const span4 = document.createElement('span');
 
 span1.textContent = '스판1';
-span2.textContent = '스판2';
+span2.textContent = '여기 위에는 테스트한 결과물 여기 -------------------------- 아래는 통신 테스트 페이지';
 span3.textContent = '스판3';
 span4.textContent = '스판4';
 
 div1.appendChild(span1);
-div2.appendChild(span2);
-div3.appendChild(span3);
-div4.appendChild(span4);
-// 의문점 : 왜 나중에 append 해준 span만 브라우저에 나타날까?
-
-
-div1.appendChild(span1);
-div1.appendChild(span2);
-div1.appendChild(span3);
-div1.appendChild(span4);
-// span은 계속 어펜드 시키면 가로로 칸이 쌓인다. (div와 같이 가로 한 줄을 다 먹지 않는다.)
-
-
-
-
-
+div2.appendChild(span1);
+// 이렇게 되면  div1에 span1이 있다가 div2로 이동된다. 
+// 하나의 문서에 노드는 중복될 수 없기 때문이다. 
 
 document.body.appendChild(div1);
 document.body.appendChild(div2);
 document.body.appendChild(div3);
 document.body.appendChild(div4);
 // div을 어펜드시키면 세로로 칸으로 쌓인다.(가로열을 div 하나가 다 먹는다.)
+// 반면에 span은 가로줄로 계속 붙는다. 
 
+document.body.appendChild(document.createElement('div').appendChild(span2));
+
+const form = document.createElement('form');
+const input = document.createElement('input');
+// input 태그의 id 지정해주고
+input.id = 'name';
+form.appendChild(input);
+
+const button = document.createElement('button');
+button.type = 'submit';
+button.textContent = '등록';
+form.appendChild(button);
+
+// 만든 form 요소를 바디에 단다. 참고로 document 다음에 오는 body는 생략 할 수 있다.
+document.body.appendChild(form);
+
+// getName() 함수를 만들어 초기 페이지에서 서버에서 데이터를 받아서 프론트로 뿌려주자.
+async function getName(){
+    try{
+        const res = await axios.get('/getName');
+        conssole.log(res.data);
+    }catch(err){
+        console.error(err);
+    }
+    const list = document.createElement('list');
+    list.appendChild();
+    
+}
+
+
+
+
+// getElementsByTagName()은 반환이 배열이다. 그리고 addEventListener를 지원하지 않는다. 
+
+// from 태그에 리스너 달기
+// 콜백 함수 안에 비동기 코드가 있고, 동기식으로 해야하므로 async를 붙여줘야 한다.
+form.addEventListener('submit', async (e) => {
+    console.log('등록 버튼 실행');
+    e.preventDefault();
+    const name = e.target.name.value; 
+
+    try{
+        await axios.post('/postName/', {name});
+    }catch(err){
+        console.error(err);
+    }
+
+    getName();
+    
+
+})
 
 
 </script>
