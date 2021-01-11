@@ -5,7 +5,9 @@
         <meta charset="utf-8">
     </head>
 <body>
- 
+
+<!-- axios CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script type="text/javascript">
 const div1 = document.createElement('div');
 const div2 = document.createElement('div');
@@ -47,23 +49,44 @@ button.type = 'submit';
 button.textContent = '등록';
 form.appendChild(button);
 
-// 만든 form 요소를 바디에 단다. 참고로 document 다음에 오는 body는 생략 할 수 있다.
+// 만든 form 요소를 바디에 단다. 
+// document.body 는 html body전체를 의미한다. 둘 중에 하나라도 생략하면 브라우저에서 오류가 난다.
 document.body.appendChild(form);
+
+// 서버에서 받아 온 데이터 뿌려줄 리스트 요소 생성
+const list = document.createElement('list');
+document.body.appendChild(list);
 
 // getName() 함수를 만들어 초기 페이지에서 서버에서 데이터를 받아서 프론트로 뿌려주자.
 async function getName(){
     try{
         const res = await axios.get('/getName');
-        conssole.log(res.data);
+        console.log('다음 아래 확인');
+        console.log(res.data);
+        //JSON으로 바뀌어서 왔을 테니깐 다시 js 객체로 변환
+        const obj = await JSON.parse(res.data);
+        
+        // 서버에서 받아온 names 객체 확인 
+        conssole.log(obj);
+        
+        // 리스트 요소 초기화 
+        list.innerHTML = '';
+
+        Object.keys(obj).map((key) => {
+            const span = document.createElement('span');
+            const editButton = document.createElement('button');
+            const deleteButton = document.createElement('button');
+            editButton.textContent = '수정';
+            deleteButton.textContent = '삭제';
+            
+            span.textContent = obj[key];
+
+            list.appendChild(span).appendChild(editButton).appendChild(deleteButton);
+        })
     }catch(err){
         console.error(err);
     }
-    const list = document.createElement('list');
-    list.appendChild();
-    
 }
-
-
 
 
 // getElementsByTagName()은 반환이 배열이다. 그리고 addEventListener를 지원하지 않는다. 
@@ -76,14 +99,16 @@ form.addEventListener('submit', async (e) => {
     const name = e.target.name.value; 
 
     try{
+        // JSON문자여로 바꿔서 보내야 하지만 간단한 문자열이므로, 그냥 보낸다
+        console.log('다음 이름 서버로 전송', name);
         await axios.post('/postName/', {name});
+       
     }catch(err){
+        console.log("뭐야여기야?");
         console.error(err);
     }
 
     getName();
-    
-
 })
 
 

@@ -9,13 +9,13 @@ http.createServer(async (req, res) => {
             if(req.url === '/'){
                 // fs 모듈로 보낼 html 파일을 버퍼로 읽는다.
                 // data 변수에 저장한다.
-                const data = await fs.readFile('./2_restFront.html');
+                const mainHtml = await fs.readFile('./2_restFront.html');
                 // 이제 응답을 하자 
                 // 응답 헤더를 먼저 작성해주고
                 // 위의 html파일을 res.end()로 보내면서 return 하자
                 // 주의할 점은 받드시 return으로 함수를 종료해야한다는 점이다.
                 res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-                return res.end(data);
+                return res.end(mainHtml);
             }else if(req.url === '/about'){
                 const data = await fs.readFile('./2_about.html');
                 res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
@@ -26,6 +26,10 @@ http.createServer(async (req, res) => {
                 // 여기서 /users 요청이 들어오면, DB대체 저장소인 users객체를 JSON 문자열로
                 // 바꾸고 그것을 res.red() 메서드로 보낸다.
                 // 그럼 프론트단에서 users JSON 문자열을 받고 알아서 데이터를 사용할 것이다.
+
+                // 주의 할 점은 통신은 JSON 문자열로 한다는 것이다.
+                // 따라서 JSON 타입의 문자열로 바꿔서 보내줘야 한다.
+                // 여기서는 js객체를 JSON문자열로 바꿔서 보낸다.
                 return res.end(JSON.stringify(users));
             }
             // 주소가 /도 /about도 /users도 아니면
