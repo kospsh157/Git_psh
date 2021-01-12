@@ -64,11 +64,11 @@ async function getName(){
         console.log('다음 아래 확인');
         console.log(res.data);
         //JSON으로 바뀌어서 왔을 테니깐 다시 js 객체로 변환
-        const obj = await JSON.parse(res.data);
+        // const obj = await JSON.parse(res.data);
         
         // 서버에서 받아온 names 객체 확인 
-        conssole.log(obj);
-        
+        // console.log(obj);
+        const obj = res.data;
         // 리스트 요소 초기화 
         list.innerHTML = '';
 
@@ -76,12 +76,26 @@ async function getName(){
             const span = document.createElement('span');
             const editButton = document.createElement('button');
             const deleteButton = document.createElement('button');
+            const div = document.createElement('div');
+            
             editButton.textContent = '수정';
             deleteButton.textContent = '삭제';
-            
             span.textContent = obj[key];
 
-            list.appendChild(span).appendChild(editButton).appendChild(deleteButton);
+            // 수정, 삭제 버튼에 리스널 달아주기
+            editButton.addEventListener('click', ()=> {
+                
+            });
+
+
+
+            div.appendChild(span);
+            div.appendChild(editButton);
+            div.appendChild(deleteButton)
+            
+
+            list.appendChild(div);
+         
         })
     }catch(err){
         console.error(err);
@@ -110,6 +124,7 @@ form.addEventListener('submit', async (e) => {
 
     getName();
 })
+
 
 
 </script>

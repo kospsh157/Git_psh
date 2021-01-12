@@ -12,8 +12,6 @@
         1. the configuration file (/usr/local/etc/mongod.conf)
         2. the log directory path (/usr/local/var/log/mongodb)
         3. the data directory path (/usr/local/var/mongodb)
-
-
 */
 
 
