@@ -46,3 +46,6 @@
         --authenticationDatabase 다음에 오는 admin은 어드민 계정이 담겨 있는 mongodb의 DB이다.
         mongo --username alice --password --authenticationDatabase admin --host mongodb0.examples.com --port 28015
 */
+
+
+

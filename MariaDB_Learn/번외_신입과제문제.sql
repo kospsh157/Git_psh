@@ -22,3 +22,4 @@ insert into 02products (no, name, price)
 select * from 01products 
 where no in 
 (select no from 01products where no not in (select no from 02products));
+

@@ -9,6 +9,8 @@
 <!-- axios CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script type="text/javascript">
+window.onload = getName();
+
 const div1 = document.createElement('div');
 const div2 = document.createElement('div');
 const div3 = document.createElement('div');
@@ -62,7 +64,7 @@ async function getName(){
     try{
         const res = await axios.get('/getName');
         console.log('다음 아래 확인');
-        console.log(res.data);
+        console.log(res.data);  
         //JSON으로 바뀌어서 왔을 테니깐 다시 js 객체로 변환
         // const obj = await JSON.parse(res.data);
         
@@ -83,17 +85,45 @@ async function getName(){
             span.textContent = obj[key];
 
             // 수정, 삭제 버튼에 리스널 달아주기
-            editButton.addEventListener('click', ()=> {
-                
+            editButton.addEventListener('click', async ()=> {
+                const editName = prompt("수정 할 이름으로 다시 입력");
+                if(!editName){
+                    // return 을 붙이는 이유는 여기서 값이 안 받아지면, 함수를 종료해야 하기 때문이다.
+                    return alert("빈 값은 안됩니다.");
+                }else {
+                    // 빈값이 아니라면 ,
+                    try {
+                        const row = {};
+                        row[key] = editName;
+            
+                        // 단순 문자열을 서버로 보낼 때는 굳이 JSON.stringify() 안해줘도 된다.
+                        // 단, 서버에서 받을 때에는 JSON.parse()를 해줘야 한다.
+                        // 객체로 만들어서 보내든 그냥 문자열만 보내든 
+                        // 프론트에서는 걍 js 상태로 보낸다.
+                        // 알아서 바뀐다.
+                        
+                        await axios.patch('/editName', {row});
+                        // 이제 서버 값이 수정되었을테니 다시 불러와서 뿌려준다.
+                        getName();
+                    } catch (err) {
+                        console.error(err);
+                    }
+                }
             });
 
-
+            deleteButton.addEventListener( 'click', async () => {
+                try {
+                    await axios.delete('/deleteUser/'+ key );
+                    getName();
+                } catch (err) {
+                    console.error(err);
+                }
+            })
 
             div.appendChild(span);
             div.appendChild(editButton);
             div.appendChild(deleteButton)
             
-
             list.appendChild(div);
          
         })
@@ -102,26 +132,24 @@ async function getName(){
     }
 }
 
-
 // getElementsByTagName()은 반환이 배열이다. 그리고 addEventListener를 지원하지 않는다. 
 
 // from 태그에 리스너 달기
 // 콜백 함수 안에 비동기 코드가 있고, 동기식으로 해야하므로 async를 붙여줘야 한다.
 form.addEventListener('submit', async (e) => {
-    console.log('등록 버튼 실행');
+    //  SUBMIT이므로 페이지가 넘어가지 않게 방지한다.
     e.preventDefault();
+    // 이벤트가 일어난 지점의 요소(여기선 form tag)의 name태그의 value
     const name = e.target.name.value; 
 
     try{
-        // JSON문자여로 바꿔서 보내야 하지만 간단한 문자열이므로, 그냥 보낸다
-        console.log('다음 이름 서버로 전송', name);
+        // 프론트에서 서버로 보낼때에는 JSON변환이 필요하지 않다. 자동으로 된다.
         await axios.post('/postName/', {name});
-       
     }catch(err){
-        console.log("뭐야여기야?");
         console.error(err);
     }
 
+    input.value = '';
     getName();
 })
 
