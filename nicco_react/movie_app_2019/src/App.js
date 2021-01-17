@@ -1,36 +1,42 @@
+import React from "react";
+import axios from "axios";
+import Movie from "./Movie";
 
-import PropTypes from "prop-types";
+class App extends React.Component {
+    state = {
+      isLoading: true,
+      movies: []
+    }
 
-function Food({name, age}){
-   return <h1>My name is {name}, and My age is {age}</h1>;
-}
-// 반드시 propTypes 를 사용해야 실수를 줄일 수 있다. 
-Food.propTypes = {
-  name: PropTypes.string.isRequired,
-  age: PropTypes.number.isRequired
-}
+    getMovies = async() => {
+      const {data : {data : {movies}}} = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
+      this.setState({movies, isLoading: false})
+    }
+    
+    componentDidMount(){
+      this.getMovies();  
+    }
+    
+    
 
-const people = [
-  {id:1, name : 'psh1', age : '1'},
-  {id:2, name : 'psh2', age : '2'},
-  {id:3, name : 'psh3', age : '3'}
-]
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-      
-      {/* 화살표 함수를 쓰면 return은 생략가능하다. 혹은 밑에와 같이 ()로 묶어주면 return임을 알 수 있다. 
-      여기서 리턴처리가 안된다면, 의도대로 작동되지 않는다. */}
-      {people.map( person => {
-        return  <Food name = {person.name} 
-                age = {person.age}
-                key = {person.id}
+  render(){
+    const {isLoading, movies} = this.state;
+
+    return <div>
+      {isLoading ? "Loading" : movies.map( (movie) => {
+        return <Movie 
+                    id= {movie.id} 
+                    title= {movie.title}
+                    year= {movie.year}
+                    summary= {movie.summary}
+                    poster= {movie.medium_cover_image}
+                    key= {movie.id}
                 />
       })}
-    </div>
-  );
+    </div>;
+  }
 }
+
 
 export default App;
