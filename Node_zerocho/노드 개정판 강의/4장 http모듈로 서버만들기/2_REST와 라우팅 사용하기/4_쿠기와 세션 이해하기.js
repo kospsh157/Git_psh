@@ -26,7 +26,6 @@
 */
 
 const http = require('http');
-const { listenerCount } = require('process');
 
 http.createServer( (req, res)=>{
     console.log(req.url, req.headers.cookie);
