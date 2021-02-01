@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Git_psh/static/css/main.2ca8a9cc.chunk.css",
-    "main.js": "/Git_psh/static/js/main.82827c98.chunk.js",
-    "main.js.map": "/Git_psh/static/js/main.82827c98.chunk.js.map",
+    "main.css": "/Git_psh/static/css/main.35f0924b.chunk.css",
+    "main.js": "/Git_psh/static/js/main.1f413b63.chunk.js",
+    "main.js.map": "/Git_psh/static/js/main.1f413b63.chunk.js.map",
     "runtime-main.js": "/Git_psh/static/js/runtime-main.134fc17e.js",
     "runtime-main.js.map": "/Git_psh/static/js/runtime-main.134fc17e.js.map",
-    "static/js/2.7fff3a79.chunk.js": "/Git_psh/static/js/2.7fff3a79.chunk.js",
-    "static/js/2.7fff3a79.chunk.js.map": "/Git_psh/static/js/2.7fff3a79.chunk.js.map",
+    "static/js/2.2b644c4d.chunk.js": "/Git_psh/static/js/2.2b644c4d.chunk.js",
+    "static/js/2.2b644c4d.chunk.js.map": "/Git_psh/static/js/2.2b644c4d.chunk.js.map",
     "index.html": "/Git_psh/index.html",
-    "static/css/main.2ca8a9cc.chunk.css.map": "/Git_psh/static/css/main.2ca8a9cc.chunk.css.map",
-    "static/js/2.7fff3a79.chunk.js.LICENSE.txt": "/Git_psh/static/js/2.7fff3a79.chunk.js.LICENSE.txt"
+    "static/css/main.35f0924b.chunk.css.map": "/Git_psh/static/css/main.35f0924b.chunk.css.map",
+    "static/js/2.2b644c4d.chunk.js.LICENSE.txt": "/Git_psh/static/js/2.2b644c4d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.134fc17e.js",
-    "static/js/2.7fff3a79.chunk.js",
-    "static/css/main.2ca8a9cc.chunk.css",
-    "static/js/main.82827c98.chunk.js"
+    "static/js/2.2b644c4d.chunk.js",
+    "static/css/main.35f0924b.chunk.css",
+    "static/js/main.1f413b63.chunk.js"
   ]
 }
