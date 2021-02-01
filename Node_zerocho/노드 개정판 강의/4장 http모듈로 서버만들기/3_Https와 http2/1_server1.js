@@ -24,6 +24,7 @@ http.createServer( (req, res) => {
         console.log('8080번 포트에서 서버 대기 중입니다.');
     })
 
+    
 // 위와 같은 서버가 있을 때 만약, 발급 받은 인증서가 있다면, 다음과 같이 하면 된다.
 
 const fs = requrie('fs');
