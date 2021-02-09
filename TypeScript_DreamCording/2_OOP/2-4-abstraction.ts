@@ -22,10 +22,16 @@
 
     interface CoffeeMaker{
         makeCoffee(shots: number): CoffeeCup;
+    }
 
+    interface CommercialCoffeeMaker {
+        makeCoffee(shots: number): CoffeeCup;
+        fillCoffeeBeans(beans: number): void;
+        clean(): void;
 
     }
-  class CoffeeMachine implements CoffeeMaker{
+    // 두 가지의 인터페이스 규약을 구현해야 하는 클래스
+  class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker{
     // 구현부 클래스에서는 반드시 인터페이스에 명시된 함수들을 다 구현해야 한다.
     private static BEANS_GRAMM_PER_SHOT: number = 7;    // static을 붙이면 class level의 자원이다.
     private coffeeBeans: number = 0;        // 멤버필드는 그냥 instance level의 자원이다.
@@ -75,13 +81,16 @@
     static makeMachine(coffeeBeans: number): CoffeeMachine{
         return new CoffeeMachine(coffeeBeans);
     }
-
   
     fillCoffeeBeans(beans: number){
         if(beans < 0) {
             throw new Error('value for beans should be greater than 0');
         }
         this.coffeeBeans += beans;
+    }
+
+    clean() {
+        console.log('cleaning the machine...');
     }
 }
 
@@ -99,5 +108,62 @@
     maker2.makeCoffee(2);
 
 
+    // 타입을 인터페이스로 받으면, 인터페이스에서 강제하는 자원들만 사용할 수 있다.
+    const maker3: CommercialCoffeeMaker = CoffeeMachine.makeMachine(34);
+    maker3.fillCoffeeBeans(32);
+    maker3.makeCoffee(2);
+    maker3.clean();
 
+
+
+
+
+    // 아마추어 사용자와 프로바리스타 사용자가 있다고 치고, 
+    // 위에서 만든 커피머신 인터페이스를 이용해서 맴버필드로 넣고 해당 자원을 사용한다.
+    class AmateurUser {
+        // 멤버필드들은 생성자 함수의 매개변수로 넣어도 된다.
+        constructor(private machine: CoffeeMaker) {}
+        makeCoffee(){
+            const coffee = this.machine.makeCoffee(2);
+            
+        }
+    }
+
+    class ProBarista {
+        constructor(private machine: CommercialCoffeeMaker) {}
+        makeCoffee(){
+            // 자원으로 받은 machine이 인터페이스가 달라서 서로 사용할 수 있는 함수가 다르다.
+            // 여기서는 machine에 기능이 더 많다.
+            const coffee = this.machine.makeCoffee(2);
+            console.log(coffee);
+            this.machine.fillCoffeeBeans(45);
+            this.machine.clean();
+            
+        }
+    }
+
+    // 이제 이걸 사용해보자
+    // CoffeeMachine은 구현부 클래스이고, makeMachine()은 자신(CoffeeMachine)을 생성해서 리턴해주는 스태틱 함수이다.
+    // 일단 구현부 클래스의 인스턴스를 생성하고 사용자 클래스의 생성자에 넣어줘야 하므로, 
+    // 우선 커피머신의 구현부 클래스부터 인스턴스화 시킨다.
+    const maker4: CoffeeMachine = CoffeeMachine.makeMachine(32);
+    const amateur = new AmateurUser(maker4);
+    const pro = new ProBarista(maker4);
+
+    // 아마추어와 프로의 차이는 같은 함수라도, 들어가 있는 자원(인터페이스)가 다르기 때문에 동작도 다르게 한다.
+    amateur.makeCoffee();   
+    pro.makeCoffee();
+    
+
+    // 여기서 포인트는 
+    /*
+        1. 종류가 다른 커피머신을 인터페이스로 나눠서 정의하고
+        2. 구현부 클래스로 인터페이스를 다 구현하고
+        3. 사용자 클래스에서는 커피머신이라는 자원을 쓸 때, 인터페이스 형태의 자원으로 가져와서 사용한다.
+        4. 사용자에서는 커피머신이 어떻게 구현되어 있는지 알 필요도 없다. 그저 그냥 사용자에 따라 
+        인터페이스를 선택해서 받아서 쓰면 된다. 
+        (그래서 인터페이스를 명명할 때, 알기 쉽게 해야한다.)
+        5. 같은 구현부 인스턴스를 넣어도 아마추어와 프로바리스타 클래스에서 정의된 인터페이스가 다르기때문에,
+        결국 인터페이스에 강제된 자원만 사용할 수 있다.
+    */
 }

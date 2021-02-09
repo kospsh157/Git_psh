@@ -30,7 +30,7 @@ app.use(session({
         secure: false,
     },
     name: 'session-cookie',
-}))
+}));
 
 app.use( (req, res, next) => {
     console.log("모든 요청에 다 실행됩니다.");

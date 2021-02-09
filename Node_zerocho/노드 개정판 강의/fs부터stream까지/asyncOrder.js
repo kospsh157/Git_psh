@@ -34,11 +34,3 @@ fs.readFile('./readme2.txt', (err, data) => {
 // 위는 단지 3개 뿐이다. 
 // 10개를 하면? 들여쓰기 낭비 장난 아니다. 코드 읽기도 짜증나고
 // 이런 콜백/지옥은 Promise나 async/await으로 어느정도는 해결 가능하다. 다음 asyncOrderPromise.js를 참고하자
-
-
-
-
-
-
-
-

@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import "./Movie.css";
 
 
-function Movie({ genres, year, title, summary, poster}) {
+function Movie({ id, genres, year, title, summary, poster}) {
     return (
         // 이렇게 무브 JSX에다가 링크를 걸어버리면, 해당 콘텐츠를 누르게 되면
         // to로 라우터 이동을 하게 된다. 라우터 이동인건인지 컴포넌트 교체가 되는 것인지는 잘 모르겠다.
@@ -20,7 +20,7 @@ function Movie({ genres, year, title, summary, poster}) {
         // 이러한 문제를 해결해야 한다.
         
         <Link to = {{
-            pathname: "/movie-detail",
+            pathname: `/movie-detail/:${id}`,
             state: {
                 // 이렇게 하면 받는 쪽에서 location.state. 에서 다음 props들에 접근 할 수 있다.
                 year,

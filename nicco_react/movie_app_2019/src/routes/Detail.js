@@ -16,19 +16,30 @@ class Detail extends React.Component {
     componentDidMount() {
         // 기본으로 오는 props에 어떤 것이들어 있는지 살펴보자
         console.log(this.props);
+
+        // didMount() 작동되는 시점 확인
+        console.log('Detail DidMount실행!');
+
         const { location, history } = this.props;
         // 여기서 부터 만약 link to 를 타고 들어오는게 아니면 그냥 home으로 리다이렉트 시키는 코드
         if(location.state === undefined) {
+            // redirect하기
             history.push("/");
+        }else{
+            console.log("뭐야 lotation.state가 있는데? 뭐가 넘어온거지?");
+            console.log(location.state);
         }
     }
     render() {
         // 만약 location 이 안오면 렌더링에서 부터 에러가 뜬다.
         // 여기 부분이 먼저 실행되므로, 여기서 location.state가 undefined일때, 어떻게 해야 하는지 정해줘야한다.
-        const { location } = this.props; 
+        const { location, history } = this.props; 
+
+
         if(location.state){
             return <span>{location.state.title}</span>
         }else{
+            console.log("location.state가 넘어 오지 않았군");
             return null;
         }
     }
