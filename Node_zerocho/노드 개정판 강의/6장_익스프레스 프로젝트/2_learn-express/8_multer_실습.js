@@ -34,7 +34,7 @@ app.use(session({
 // multer 사용
 const multer = require('multer');
 const { nextTick } = require('process');
-const fs = requrie('fs');
+const fs = require('fs');
 
 try{
     fs.readdirSync('uploads');
@@ -52,6 +52,18 @@ const upload = multer({
             done(null, 'uploads/');
         },
         filename(req, file, done){
+            // path.basename()메서드는 경로에서 가장 마지막 부분을 짤라서 리턴한다.
+            // >>> 파일이름.ext 
+            // 여기에서 두 번째 인수로 ext 까지 넣어주면 확장자 부분을 짤라서 정말 파일 이름만 리턴한다.
+            // >>> 파일이름
+
+            // path.extname() 
+            // var ext = path.extname('/Users/Refsnes/demo_path.js');
+            // console.log(ext);  // .js 
+            // 즉 확장자만 리턴시킨다.
+
+            // 여기서 file.originalname 은 경로를 포함한 파일의 이름을 담고있다. 
+            // 여기서는 /uploads/이미지파일이름.jpg 이렇게 나올 것이다.
             const ext = path.extname(file.originalname);
             done(null, path.basename(file.originalname, ext) + Date.now() + ext);
         },
@@ -77,7 +89,7 @@ app.post('/upload',
     }
 );
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
     console.log('GET / 요청에서만 실행됩니다.');
     next();
 }, (req, res) => {
@@ -89,9 +101,11 @@ app.get('/', (req, res) => {
 app.use((err, req, res, next) => {
     console.error(err);
     // 상태 코드 지정해서 보내주자 500이면 서버 내부 오류이다.
+    // 여기 err.message 는 위에서 정의한 new Error에서 써준 에러문구이다.
     res.status(500).send(err.message);
 });
 
 app.listen(app.get('port'), ()=> {
     console.log(`현재 ${app.get('port')} 포트에서 서버 대기중...`);
 });
+

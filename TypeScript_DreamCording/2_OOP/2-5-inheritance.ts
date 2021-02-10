@@ -62,8 +62,6 @@
             console.log('cleaning the machine...');
         }
 }
-
-  
     class CaffeLatteMachine extends CoffeeMachine{  // 부모 클래스의 생성자가 private면 상속할 수 없다.
         // 따라서 부모 클래스의 생성자함수를 public으로 해주거나 protected로 해줘야한다.
         // 그리고 순서상 부모클래스가 먼저 나와야 한다. 
