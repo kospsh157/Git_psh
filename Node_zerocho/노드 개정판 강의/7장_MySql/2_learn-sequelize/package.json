@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "mariadb": "^2.5.2",
     "morgan": "^1.10.0",
+    "mysql2": "^2.2.5",
     "nunjucks": "^3.2.2",
     "sequelize": "^6.5.0",
     "sequelize-cli": "^6.2.0"
