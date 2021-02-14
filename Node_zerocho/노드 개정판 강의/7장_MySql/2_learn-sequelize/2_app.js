@@ -4,6 +4,7 @@ const path = require('path');
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
 
+// /models/index.js를 불러와서 그 모듈의 안에서 sequelize 프로퍼티를 가져온다. 
 const { sequelize } = require('./models');
 
 const app = express();
@@ -15,7 +16,7 @@ nunjucks.configure('view', {
     watch: true,
 });
 
-// 시퀄라이저 사용 시작 
+// 가져온 시퀄라이저를 사용
 // force: false옵션은 서버 실행 시마다 테이블을 재생성하는 유무이다.
 // 지금은 false로 되어 있으므로, 매번 서버 실행시마다 테이블을 재생성하지 않는다.
 // 테이블을 잘못 만든 경우에 true로 설정하면 된다.

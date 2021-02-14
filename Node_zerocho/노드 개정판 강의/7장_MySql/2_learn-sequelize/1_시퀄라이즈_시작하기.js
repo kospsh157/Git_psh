@@ -37,3 +37,18 @@
 */
 
 // 자 이제 2_app.js부터 본격적으로 사용방법을 알아보자
+
+
+
+// 마리아DB root 비밀번호 설정하기
+// 이걸 잘 해야 시퀄라이저로 접속 할 때, 에세스 거부가 안일어난다.
+/*
+    1. 일단 마리아디비를 홈브루로 설치한다.
+    2. sudo mysql 치고 맥 비밀번호 치고 들어간다.
+    3. SELECT user,authentication_string,plugin,host FROM mysql.user;
+    치면 root에서 아마 패스워드가 안보일것이다. 
+    4. ALTER USER 'root'@'localhost' IDENTIFIED BY '15243';
+    이렇게 하면 root패드워드가 15243으로 설정된다.
+    5. SELECT user,authentication_string,plugin,host FROM mysql.user;
+    다시 위를 쳐보면 root비밀번호가 암호화 되어서 보일 것이다.
+*/

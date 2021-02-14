@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "psh",
+    "username": "root",
     "password": "15243",
     "database": "psh",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mariadb"
   },
   "test": {
     "username": "root",

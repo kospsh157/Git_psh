@@ -12,6 +12,7 @@ const useInput = initialValue => {
 
     // 이렇게 {}로 감싸면 익명객체가 된다. 
     // 그러면 value값을 받을때에는 무조건 프로퍼티이므로, useInput().value로 받아야 한다.
+    // 이렇게 html태그의 프로퍼티명과 똑같이 해서 반환하면, JSX 에서 그냥 풀어서 쓰면 자동으로 먹는다.
     return {value, onChange};
 }
 
