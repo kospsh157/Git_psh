@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App_3_useInput_2';
+import App from './App_4_useTabs_2.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
