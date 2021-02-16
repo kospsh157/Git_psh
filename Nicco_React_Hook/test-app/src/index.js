@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App_4_useTabs_2.js';
+import App from './App_6_useEffect_2';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
