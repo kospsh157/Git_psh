@@ -5,7 +5,7 @@
 
 // 커맨드를 누르고 클릭을 하면 정의되어있는 곳으로 간다. 
 
-
+{
 Array;          // 여기 커맨드를 누르고 들어가면 코딩이 쓰여저 있는 곳으로 갈 수 있다.
 [1, 2].map      // 객체지향, 제너릭 개념을 배웠으므로, 이제 저 코드가 정의되어 있는 곳으로 가서 이해할 수 있을 것이다.
 
@@ -46,7 +46,19 @@ let fishPet = pet as Fish;  // pet은 무조건 Fish타입이다. (확실할때�
 
 
 // 인자로 들어오는 어떤 값이 반드시 어떤 클래스를 상속해야 하는 타입이라면, 타입 검사기로서 every()함수를 쓸 수 있다.
-// every<S extends T>(predicate: (value: T, index: number, array: T[]) => value is S, thisArg?: any): this is S[];
+// every<S extends T>(predicate: (value: T, index: number, array: T[]) => 
+// value is S, thisArg?: any): this is S[];
+
+// every() 함수는 
+/*
+    1. 인자로 콜백함수 하나를 갖는다.
+    2. 그 콜백함수 인자가 총 3개로, value, index, array가 있다.
+    3. 콜백함수의 리턴은 value is S의 boolean 값으로 나온다.
+    4. 결국 every() 함수 리턴값은 this is S[], 즉, every함수가 붙은 앞의 배열이 S타입인지 아닌지 하나씩 검사하
+    고 하나라도 false가 있으면 false를 리턴한다.
+    5. 대체로 콜백함수에서 value 인자 하나만 쓴다. 다음 예제도 그렇다.
+
+*/
 
 // 사용자 타입 검사기 이런식으로 먼저 predicate함수를 작성해준다.
 function isFish(pet: Fish | Bird): pet is Fish {
@@ -73,3 +85,4 @@ console.log(animals.every<Cat>(isCat));
 
 
 
+}

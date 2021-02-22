@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App_8_useClick';
+import App from './App_9_useConfirm';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
