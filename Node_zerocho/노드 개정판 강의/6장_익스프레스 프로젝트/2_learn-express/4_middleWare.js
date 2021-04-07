@@ -16,7 +16,7 @@ app.use(morgan('dev'));
 app.use('/', express.static(path.join(__dirname, 'public')));
 // body-parser를 사용하여 JSON 타입의 데이터와 주소형식 데이터(GET)를 자동으로 받아서
 // 자동으로 자바스크립트 오브젝트로 변화해서 받는다.
-app.use(express.json());
+app.use(express.json()); // 노드에 빌트인 되어 있으므로 이 구문만 있으면 body-parser를 사용하게 된다.
 app.use(express.urlencoded({extended: false}));
 
 
@@ -89,9 +89,9 @@ app.listen(app.get('port'), () => {
         4. app.use('/', express.static(path.join(__dirname, 'public')));
         5. 함수의 인수로 정적 파일들이 담겨 있는 폴더를 지정하면 된다.
         6. 현재 public폴더가 지정되어 있다. 
-        7. 예를 들어 저렇게 하면, public/stylesheets/style.css 는 
+        7. 예를 들어 저렇게 하면, public/stylesheets/style.css 는
         http://localhost:3000/stylesheets/style.css 로 접근 가능하다.
-        8. public 폴더를 만들고 거기에 정적인 이미지나 css,js, 이미지 파일들을 넣고 쓰는 것이다.
+        8. public 폴더를 만들고 거기에 정적인 이미지나 css, js, 이미지 파일들을 넣고 쓰는 것이다.
         9. 실제 서버의 폴더 경로에는 public이 들어있지만, 요청 주소에는 public이 들어 있지 않다는 점이 포인트.
         10. 저렇게 하면 외부인이 서버의 구조를 쉽게 파악할 수 없다.
         11. 이는 보안에 큰 도움이 된다.

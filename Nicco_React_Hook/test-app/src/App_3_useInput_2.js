@@ -8,9 +8,9 @@ import './App.css';
 // 알아두면 빠르게 유효성검사를 할 수 있다.
 
 
-
 const useInput = (initialValue, vaildator) => {
     const [value, setValue] = useState(initialValue);
+    
     const onChange = (e) => {
         const { target: {value} } = e;
         let willUpdate = true;

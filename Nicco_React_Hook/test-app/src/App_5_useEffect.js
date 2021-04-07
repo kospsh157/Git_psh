@@ -23,6 +23,10 @@ import ReactDOM from "react-dom";
     만약 디펜던시에 어떤 데이터를 추가하면 그 데이터에 의존하여, 그 데이터만 바라보다가 그 데이터가 바뀌면
     다시 effect인자로 준 함수를 실행한다.
 
+    추가적으로, useEffect() 에서 효과함수 콜백에 리턴문을 넣게 되면 해당 컴포넌트가 사라지기 직전에 다시 한번 리턴구분을 실행한다.
+    즉, componentWillUnmount 처럼 사용 할 수 있다. 
+
+    
 */
 
 const App = () => {
@@ -37,7 +41,7 @@ const App = () => {
 
     return (
         <div className = "App">
-            <div>Hi</div>
+            <div>Hi</div> 
             <button onClick={() => setNumber(number + 1)}> {number}</button>
             <button onClick={() => setAnumber(aNumber + 1)}> {aNumber}</button>
         </div>

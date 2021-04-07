@@ -11,7 +11,7 @@
             혹은 인터페이스 클래스이름명은 구현클래스이름명앞에 대문자I만 붙이는 경우
             혹은 구현하는 클래스 이름 뒤에 -Imp을 붙이는 방법이 있다.
         
-            
+           
 
 */
 { 
@@ -31,68 +31,68 @@
 
     }
     // 두 가지의 인터페이스 규약을 구현해야 하는 클래스
-  class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker{
+    class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker{
     // 구현부 클래스에서는 반드시 인터페이스에 명시된 함수들을 다 구현해야 한다.
-    private static BEANS_GRAMM_PER_SHOT: number = 7;    // static을 붙이면 class level의 자원이다.
-    private coffeeBeans: number = 0;        // 멤버필드는 그냥 instance level의 자원이다.
+        private static BEANS_GRAMM_PER_SHOT: number = 7;    // static을 붙이면 class level의 자원이다.
+        private coffeeBeans: number = 0;                    // 멤버필드는 그냥 instance level의 자원이다.
 
-    private constructor(beans: number) {
-        this.coffeeBeans = beans;
-    }
-
-    private grindBeans(shots: number){
-        console.log(`grinding beans for ${shots}`);
-        if(this.coffeeBeans < shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT){
-            throw new Error("Not enough coffee beans!");
+        private constructor(beans: number) {
+            this.coffeeBeans = beans;
         }
-        this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT;
 
-    }
+        private grindBeans(shots: number){
+            console.log(`grinding beans for ${shots}`);
+            if(this.coffeeBeans < shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT){
+                throw new Error("Not enough coffee beans!");
+            }
+            this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT;
 
-    // 정보 은익으로 추상화 구현 (외부에서는 볼 필요도 없다.)
-    private preheat(): void {
-        console.log('heating up...');
-    }
-    // 정보 은익으로 추상화 구현 (외부에서는 볼 필요도 없다.)
-    private extract(shots: number): CoffeeCup {
-        console.log(`Pulling ${shots} shots...`);
-        return {
-            shots,
-            hasMilk: false,
+        }
+
+        // 정보 은익으로 추상화 구현 (외부에서는 볼 필요도 없다.)
+        private preheat(): void {
+            console.log('heating up...');
+        }
+        // 정보 은익으로 추상화 구현 (외부에서는 볼 필요도 없다.)
+        private extract(shots: number): CoffeeCup {
+            console.log(`Pulling ${shots} shots...`);
+            return {
+                shots,
+                hasMilk: false,
+            }
+        }
+        makeCoffee(shots: number): CoffeeCup{
+            this.grindBeans(shots);
+            this.preheat();
+            return this.extract(shots);
+            
+            // if(this.coffeeBeans < shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT){
+            //     throw new Error("Not enough coffee beans!");
+            // }
+            // // 커피 콩이 충분 할 때 ( 커피를 만들기 시작한다 )
+            // this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT;
+            // return {
+            //     shots,
+            //     hasMilk: false
+            // };
+        }
+
+        // 스태틱 함수로만 객체를 만들 수 있도록 한다.
+        static makeMachine(coffeeBeans: number): CoffeeMachine{
+            return new CoffeeMachine(coffeeBeans);
+        }
+    
+        fillCoffeeBeans(beans: number){
+            if(beans < 0) {
+                throw new Error('value for beans should be greater than 0');
+            }
+            this.coffeeBeans += beans;
+        }
+
+        clean() {
+            console.log('cleaning the machine...');
         }
     }
-    makeCoffee(shots: number): CoffeeCup{
-        this.grindBeans(shots);
-        this.preheat();
-        return this.extract(shots);
-         
-        // if(this.coffeeBeans < shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT){
-        //     throw new Error("Not enough coffee beans!");
-        // }
-        // // 커피 콩이 충분 할 때 ( 커피를 만들기 시작한다 )
-        // this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAMM_PER_SHOT;
-        // return {
-        //     shots,
-        //     hasMilk: false
-        // };
-    }
-
-    // 스태틱 함수로만 객체를 만들 수 있도록 한다.
-    static makeMachine(coffeeBeans: number): CoffeeMachine{
-        return new CoffeeMachine(coffeeBeans);
-    }
-  
-    fillCoffeeBeans(beans: number){
-        if(beans < 0) {
-            throw new Error('value for beans should be greater than 0');
-        }
-        this.coffeeBeans += beans;
-    }
-
-    clean() {
-        console.log('cleaning the machine...');
-    }
-}
 
     const maker: CoffeeMachine = CoffeeMachine.makeMachine(34);
     maker.fillCoffeeBeans(30);
@@ -170,6 +170,19 @@
         5. 같은 구현부 인스턴스를 넣어도 아마추어와 프로바리스타 클래스에서 정의된 인터페이스가 다르기때문에,
         결국 인터페이스에 강제된 자원만 사용할 수 있다.
     */
+
+
+    // 정리
+    /*
+        1. 종류가 다르지만 관련이 있는 인터페이스들을 작성한다.
+        2. 구현부 클래스 하나가 모든 인터페이스들을 구현한다.
+        3. 사용자 클래스를 만들고 필요한 인터페이스를 골라서 받도록 한다.
+        4. 구현부 클래스의 인스턴스를 사용자 클래스에 주입하여, 사용한다. 
+        5. 이때, 사용자 클래스에서는 당연히 골라서 쓴 인터페이스의 자원만 사용가능하다.
+
+    */
+
+        
 }
 
 

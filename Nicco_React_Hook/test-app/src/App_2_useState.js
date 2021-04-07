@@ -11,7 +11,7 @@ const App = () => {
     //   프래그먼트는 동시에 여러개의 컴포넌트를 렌더링 해야 할 때는 반드시 써야 한다.
     <>
         <h1>hello {item}</h1>
-        <h2>Start editing to see some magic happne!</h2>
+        <h2>Start editing to see some magic happen!</h2>
         <button onClick={incrementItem}>Increment</button>
         <button onClick={decrementItem}>Decrement</button>
     </>

@@ -63,6 +63,7 @@
             console.log('cleaning the machine...');
         }
     }
+
     class CaffeLatteMachine extends CoffeeMachine{  // 부모 클래스의 생성자가 private면 상속할 수 없다.
         // 따라서 부모 클래스의 생성자함수를 public으로 해주거나 protected로 해줘야한다.
         // 그리고 순서상 부모클래스가 먼저 나와야 한다. 
@@ -115,10 +116,22 @@
 
     
 
+
     const latteMachine = new CaffeLatteMachine(23, 'SDFESD');
     const coffee = latteMachine.makeCoffee(1);
     console.log(coffee);
     // serialNumber는 자식 인스턴스에서만 접근 가능 하다.
     console.log(latteMachine.serialNumber);
     
+    // 정리
+    /*
+        1. 여기서는 사용자 클래스가 필요한 인터페이스로 주입받기로 하고, 구현부 클래스를 인터페이스 타입으로 주입받는게 아니라, 
+        구현부 클래스를 그냥 상속받고 있다.
+        2. 필요한 인터페이스를 선택해서 사용자 클래스로 만들어서 쓰는것이 아니라, 
+        그냥 구현부 클래스가 공통적으로 꼭 구현해야 할 인터페이스 하나를 구현해놓고 있고,
+        사용자 클래스를 만들어서 구현부 클래스를 상속받은 다음에, 필요한 부분을 자식쪽에서 오버라이딩해서 사용한다.
+        3. 2-4-abstraction.ts에서 인터페이스를 선택해서 필요한 기능만을 받아서 사용하는 것과, 
+        일단 다 상속 받고 필요한 기능을 오버라이딩해서 사용하는 것이 차이점이다. 
+
+    */
 }

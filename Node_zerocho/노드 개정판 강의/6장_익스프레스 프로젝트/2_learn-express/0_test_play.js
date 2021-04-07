@@ -8,6 +8,7 @@ const obj1 = {
 }
 console.log(obj1);  // { func1: [Function: func1], func2: [Function: func2] }
 
+// es6 이후
 const obj2 = {
     func1(){
         console.log('dfdf');

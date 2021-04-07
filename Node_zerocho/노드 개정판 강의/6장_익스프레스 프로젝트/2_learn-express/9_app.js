@@ -8,12 +8,12 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 const path = require('path');
 
-dotenv.config();
+dotenv.config();    // 이렇게 하면 현재 디렉토리의 .env 파일을 자동으로 인지해서 환경변수를 설정한다.
 
 
 // 이 다음 부터 외부 라우터 가져오기 
-const indexRouter = require('./routes'); // index.js는 생략 할 수 있기 때문에 이렇게 적어도된다.
-const userRouter = require('./routes/user');
+const indexRouter = require('./9_routes'); // index.js는 생략 할 수 있기 때문에 이렇게 적어도된다.
+const userRouter = require('./9_routes/user');
 
 
 
@@ -34,8 +34,10 @@ app.use(session({
     saveUninitialized: false,
     secret: process.env.COOKIE_SECRET,
     cookie: {
+        
         httpOnly: true,
         secure: false,
+
     },
     name: 'session-cookie',
 }));
@@ -98,13 +100,13 @@ app.post('/upload',
     }
 );
 
-app.get('/', (req, res, next) => {
-    console.log('GET / 요청에서만 실행됩니다.');
-    next();
-}, (req, res) => {
-    throw new Error('에러는 에러처리 미들웨어로 간다.\
-    여기는 그냥 라우터 역할만 하자');
-});
+// app.get('/', (req, res, next) => {
+//     console.log('GET / 요청에서만 실행됩니다.');
+//     next();
+// }, (req, res) => {
+//     throw new Error('에러는 에러처리 미들웨어로 간다.\
+//     여기는 그냥 라우터 역할만 하자');
+// });
 
 
 
@@ -119,9 +121,6 @@ app.use(( req, res, next) => {
 });
 
 
-
-
-
 // 에러 미들웨어는 일반적으로 가장 밑에 작성하고, 4개의 기본 파라미터를 쓰지 않아도 써줘야 한다.
 app.use((err, req, res, next) => {
     console.error(err);
@@ -133,4 +132,7 @@ app.use((err, req, res, next) => {
 app.listen(app.get('port'), ()=> {
     console.log(`현재 ${app.get('port')} 포트에서 서버 대기중...`);
 });
-
+/* 포트 죽이기 
+sudo lsof -i :5955
+sudo kill -9 PID
+*/

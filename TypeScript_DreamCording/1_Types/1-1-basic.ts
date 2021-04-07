@@ -5,7 +5,7 @@
     /*
         1. Primitive: number, string, boolean, bigint, symbol, null, undefined
         2. Object: function, array...
-
+        3. 
 
     */
 
@@ -72,6 +72,8 @@
     
     // 다음 과정을 따른다. 
     // 에러가 발생하면, 로그 뿌려주고, 프로그램 정지하고, 아무것도 리턴하는 것 없다. 라는 뜻이다.
+    // 다음과 같이 에러가 발생하면 자연스럽게 프로세스가 종료되므로, return을 하지 않아도 된다. 
+    // 만약 에러구문이 아니라 다른 구문이라면, return키워드가 없어도 생략된것처럼 적용되어서 return; 를 쓰기 때문에, 에러가난다.
     function throwError(message: string): never{
         //message -> server (log)
         throw new Error(message);
