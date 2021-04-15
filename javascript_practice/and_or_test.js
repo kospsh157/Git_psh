@@ -30,7 +30,24 @@ if(true && 0 && 1) console.log('이것은 반드시 보이지 않는다.');
 if(false || 0 || '')console.log('이것은 보이면 안돼.');
 if(-1 || 0 || '' || true)console.log('이것은 반드시 보인다.');
 
-
 const v1 = true && 1 && 9;
 console.log(v1);
 if(v1)console.log('v1은 참이다.');
+
+// 주의해야 할 점은 그냥 숫자나 문자열끼리 연산하면, 연산 규칙에 의해서 해당하는 숫자나 문자를 리턴한다.
+// boolean 값과 숫자나 문자열을 같이 연산하면, 그냥 해당 값이 나온다. 전체적으로 boolean타입으로 바뀌어서 리턴되지 않는다.
+let a = true;
+let b = 1;
+let c = 1;
+let d = 10;
+console.log((a || b && (c && d)));
+console.log(a && d);
+
+
+// 
+let ab = true;
+let cd = 'ddf';
+let ef = 10;
+
+console.log((ab && cd && ef));      // 10
+console.log((ab && (cd && ef)));    // 10    
