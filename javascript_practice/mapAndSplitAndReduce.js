@@ -112,10 +112,67 @@ console.log(array_2);
 
 
 // 실전예제, 처음에 받은 배열은 students배열으로,  각 학생마다 id, 이름, 평가점수가 있다.
+const students = [
+	{
+		"id": 1,
+		"name": "ryu",
+		"score": "A"
+	},
+	{
+		"id": 2,
+		"name": "suzy",
+		"score": "B"
 
-
-
-
-
-
+	},
+	{
+		"id": 3,
+		"name": "han",
+		"score": "A"
+	},
+	{
+		"id": 4,
+		"name": "gyeong",
+		"score": "C"
+	},
+	{
+		"id": 5,
+		"name": "kim",
+		"score": "D"
+	},
+	{
+		"id": 6,
+		"name": "ku",
+		"score": "A"
+	},
+	{
+		"id": 7,
+		"name": "soo",
+		"score": "F"
+	},
+	{
+		"id": 8,
+		"name": "bark",
+		"score": "A"
+	},
+	{
+		"id": 9,
+		"name": "choi",
+		"score": "B"
+	},
+	{
+		"id": 10,
+		"name": "min",
+		"score": "A"
+	},
+];
 // students 배열을 이용해서 평가점수 마다 누가누가있는지 배열을 다시 만들어보자.
+// 리턴되는 패턴은 다음과 같다. { A:[{ id, name, score }], B:[{ id, name, score }], C:[{ id, name, score }], D:[{ id, name, score }], F:[{ id, name, score }] }
+const groupScore = students.reduce((acc, curr)=>{
+    if(acc[curr.score]){
+        acc[curr.score].push({...curr});
+    }else{
+        acc[curr.score] = [{...curr}];
+    }
+    return acc;
+}, {});
+console.log(groupScore);
