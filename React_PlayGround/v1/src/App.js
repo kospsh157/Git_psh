@@ -42,7 +42,6 @@ function UsingAndOperator() {
 
 
 function App() {
-  
   return (
     <UsingAndOperator/>
   );
