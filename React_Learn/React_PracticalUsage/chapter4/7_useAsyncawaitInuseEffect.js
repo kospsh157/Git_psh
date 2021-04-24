@@ -95,9 +95,6 @@ function Profile({userId}){
 
     이 문제가 일어나는 근본적인 이유는 훅안에서 꺼내면(비록 필요에 의해서 꺼냈지만), 
     컴포넌트가 렌더링 될 때 마다 fetchAndSetUer함수가 갱신되기 때문이다.
-
-    
-
 */
 // userId가 변경될 때만 fetchAndSetUser함수 갱신
 // 이 방법으로 해결하기 위해선 먼저 useCallback() 훅의 기능을 배워야 한다.
@@ -122,5 +119,5 @@ function Profile({userId}){
 // 설명 
 /*
     1번 : useCallback 훅을 이용해서 fetchAndSetUser함수가 필요할 때만 갱신되도록 개선했다.
-    2번 : 이제 fetchAndSetUser함수는 userId가 변경될 때만 호출된다.  
+    2번 : 이제 fetchAndSetUser함수는 userId가 변경될 때만 호출된다.
 */

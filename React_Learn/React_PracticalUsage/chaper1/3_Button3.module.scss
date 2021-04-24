@@ -1,0 +1,18 @@
+@import './3_shared.scss';          // 1번
+
+.big {
+    width: 100px;
+}
+.small {
+    width: 50px;
+}
+.button {
+    height: 30px;
+    background-color: $infoColor;   // 2번
+}
+// 설명
+/*
+    1번 : 자바스크립트의 모듈 시스템과 비슷하게 다른 scss파일을 가져올 수 있다.
+    2번 : 다른 scss파일에 정의된 변수를 사용할 수 있다.
+
+*/
