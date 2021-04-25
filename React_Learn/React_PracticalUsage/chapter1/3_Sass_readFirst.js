@@ -33,4 +33,4 @@ $sizeNormal: 100px;         // 1번
 
 
 // 다음 실습을 해보자
-// shared.scss파일을 만든 다음 다음 내용을 입력하자.
+// 3_shared.scss, 3_Button.module.scss 파일을 만든 다음 실습을 한번 해보자.
