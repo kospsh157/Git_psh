@@ -1,12 +1,12 @@
 import React from 'react';
-import Button from './3_Button';
+import Button from './Button';
 
 
 function App() {
   return (
     <div>
-      <Button size='Big'/>
-      <Button size='Small'/>
+      <Button size='big'/>
+      <Button size='small'/>
     </div>
   );
 }
