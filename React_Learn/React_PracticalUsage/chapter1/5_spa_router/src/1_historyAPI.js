@@ -36,7 +36,7 @@ export default function App(){
   2. 이때 서버로 요청이 가지 않고 화면도 변하지 않는다.
   3. 단지 스택에 state가 쌓일 뿐이다.
   4. onpopstate의 핸들러 함수도 호출되지 않다가, 뒤로가기 버튼을 누르면 호출된다.
-  5. 계속 뒤로가기 버튼을 누르면 스택이 비워질 때까지 onpopstate함수가 호출되다가 최초에 접속했던 지점으로 돌아간다. 
+  5. 계속 뒤로가기 버튼을 누르면 스택이 비워질 때까지 onpopstate함수가 호출되다가 최초에 접속했던 지점으로 돌아간다.
   6. 이렇게 pushState함수와 popstate이벤트로 위에서 말한 두 가지 기능을 구현할 수 있다.
   7. replaceState함수는 기능이 pushState함수와 같지만, 스택을 쌓지 않고 가장 최신의 state를 계속 대체한다.
   8. 이렇게 replaceStgate, pushState, 함수와 popstate이벤트만 있으면 클라이언트에서 라우팅 처리가 되는 싱글페이지애클리케이션을
@@ -44,3 +44,4 @@ export default function App(){
 
   다음 2_simpleSPA.js 에서 간단한 싱글페이지애플리케이션을 만들어보자.
 */
+

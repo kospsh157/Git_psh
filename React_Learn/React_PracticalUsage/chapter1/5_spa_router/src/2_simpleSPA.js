@@ -52,3 +52,12 @@ function Page2(){
   page2도 마찮가지.
   뒤로 가기를 눌르면 popstate이벤트가 발생된다. 그 전에 페이지로 돌아간다. 
 */
+
+
+// 이와 같이 브라우저 히스ㅗ리 API를 이용해서 페이지 라우팅 처리를 직접 구현할 수도 있다.
+// 허나 라우팅 처리를 직접 구현하는 것은 신경써야 할 부분이 많아서 react-router-dom 패키지를 주로이용한다.
+// 리액트로 싱글페이지애플리케이션을 만들 때 많이 사용된다.
+// react-router-dom패키지도 내부적으로브라우저 히스토리 API를 사용한다.
+// 먼저 react-router-dom패키지를 설치해보자. npm -i react-router-dom
+
+// 다음 학습 파일 3_react-router-dom.js를 보자 
